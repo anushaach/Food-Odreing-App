@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">shopfood</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notification">Notification</string>
+
+    <string-array name="State">
+        <item>NepaliFood</item>
+        <item>NewariFood</item>
+    </string-array>
+
+    <string-array name="shipper">
+        <item>Shipper 1</item>
+        <item>Shipper 2</item>
+    </string-array>
+
+    <string-array name="DishName">
+        <item>Dal Bhat</item>
+        <item>Roti</item>
+        <item>Gundruk Achar</item>
+        <item>Chicken Briyani</item>
+        <item>Mutton Briyani</item>
+        <item>Chicken-MOMO</item>
+        <item>Chowmin</item>
+        <item>Pratha</item>
+        <item>Chicken Nuts</item>
+        <item>Chicken Fry</item>
+        <item>Veg-MOMO</item>
+        <item>Chilly-MOMO</item>
+        <item>Chatpat</item>
+        <item>Gulab Jhuman</item>
+        <item>Samosa</item>
+        <item>Rajma</item>
+        <item>Palak paneer</item>
+        <item>Pizza</item>
+        <item>Burger</item>
+        <item>Chicken Roast</item>
+
+
+    </string-array>
+</resources>
