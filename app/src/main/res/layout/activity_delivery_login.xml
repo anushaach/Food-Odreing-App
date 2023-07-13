@@ -131,6 +131,10 @@
             android:drawableLeft="@drawable/baseline_call_24"
             android:padding="10dp"
             android:textColor="#FFFF"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
