@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "549820017393",
-    "project_id": "shopfood-ba812",
-    "storage_bucket": "shopfood-ba812.appspot.com"
+    "project_number": "807701063032",
+    "project_id": "shopfood-84efe",
+    "storage_bucket": "shopfood-84efe.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:549820017393:android:37e10ca7c8bfc2bf959750",
+        "mobilesdk_app_id": "1:807701063032:android:0086f019735bb2548c948d",
         "android_client_info": {
           "package_name": "my.shopfood"
         }
       },
       "oauth_client": [
         {
-          "client_id": "549820017393-t7pavh0r6ori5prqfdkcs8eqv6uhl9ao.apps.googleusercontent.com",
+          "client_id": "807701063032-22vufkp017tuu4si8lnhahsh3julva0a.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCH8LycgYmqlDHY8-k5zmuLc85A_7ObFPE"
+          "current_key": "AIzaSyBIKEVMBgz6IQrk6yyFaPahxQpPqbiQg8A"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "549820017393-t7pavh0r6ori5prqfdkcs8eqv6uhl9ao.apps.googleusercontent.com",
+              "client_id": "807701063032-22vufkp017tuu4si8lnhahsh3julva0a.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
