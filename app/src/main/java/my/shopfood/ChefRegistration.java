@@ -31,8 +31,8 @@ import java.util.HashMap;
 
 
 public class ChefRegistration extends AppCompatActivity {
-    String[] NepaliFood = {"MOMO", "chowmein", "Pizza"};
-    String[] NewariFood = {"Yomari", "sukuti"};
+    String[] NepaliFood = {"Chitwan", "Butwal", "Nepaljung"};
+    String[] NewariFood = {"Kathamdu", "Pokhara"};
 
     TextInputLayout Fname, Lname, Email, Pass, CPass, mobileno, houseno, area, pincode;
     Spinner Statespin, Cityspin;

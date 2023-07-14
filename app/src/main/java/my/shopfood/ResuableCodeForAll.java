@@ -29,4 +29,16 @@ public class ResuableCodeForAll {
 
     public static void ShowAlert(Registration registration, String error, String message) {
     }
+
+    public static void ShowAlert(Chefsendopt chefsendopt, String error, String message) {
+    }
+
+    public static void ShowAlert(Delivery_Login delivery_login, String verification_failed, String s) {
+    }
+
+    public static void ShowAlert(Delivery_Registration delivery_registration, String error, String message) {
+    }
+
+    public static void ShowAlert(Delivery_sendopt delivery_sendopt, String error, String message) {
+    }
 }

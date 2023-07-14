@@ -12,6 +12,21 @@
         android:theme="@style/Theme.Shopfood"
         tools:targetApi="31">
         <activity
+            android:name=".Delivery_sendopt"
+            android:exported="false" />
+        <activity
+            android:name=".DeliveryForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".DeliveryFoodPanel_BottomNavigation"
+            android:exported="false" />
+        <activity
+            android:name=".Customer"
+            android:exported="false" />
+        <activity
+            android:name=".Delivery_VerifyPhone"
+            android:exported="false" />
+        <activity
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity

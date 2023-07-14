@@ -3,7 +3,6 @@ package my.shopfood;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +24,8 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
-public class Chefsendopt extends AppCompatActivity {
+public class Delivery_VerifyPhone extends AppCompatActivity {
+
     String verificationId;
     FirebaseAuth FAuth;
     Button verify, Resend;
@@ -33,23 +33,22 @@ public class Chefsendopt extends AppCompatActivity {
     EditText entercode;
     String phoneno;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chefsendopt);
+        setContentView(R.layout.activity_delivery_verify_phone);
 
         phoneno = getIntent().getStringExtra("phonenumber").trim();
 
 
-        entercode = (EditText) findViewById(R.id.code);
-        txt = (TextView) findViewById(R.id.text);
-        Resend = (Button) findViewById(R.id.Resendotp);
-        verify=(Button) findViewById(R.id.Verifyy) ;
+        entercode =(EditText) findViewById(R.id.Pnumber);
+        txt = (TextView) findViewById(R.id.textt);
+        Resend = (Button) findViewById(R.id.Resendcode);
+        verify = (Button) findViewById(R.id.Verifycode);
         FAuth = FirebaseAuth.getInstance();
+
         Resend.setVisibility(View.INVISIBLE);
         txt.setVisibility(View.INVISIBLE);
-
 
         sendVerificationcode(phoneno);
 
@@ -131,7 +130,6 @@ public class Chefsendopt extends AppCompatActivity {
 
 
     }
-
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
@@ -155,36 +153,32 @@ public class Chefsendopt extends AppCompatActivity {
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
 
-            Toast.makeText(Chefsendopt.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(Delivery_VerifyPhone.this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     };
 
     private void verifyCode(String code) {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId , code);
-        SignInWithPhone(credential);
+        linkCredential(credential);
     }
 
-    private void SignInWithPhone(PhoneAuthCredential credential) {
+    private void linkCredential(PhoneAuthCredential credential) {
 
-        FAuth.signInWithCredential(credential)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        FAuth.getCurrentUser().linkWithCredential(credential)
+                .addOnCompleteListener(Delivery_VerifyPhone.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            startActivity(new Intent(Chefsendopt.this,ChefFoodPanel_BottomNavigation.class));
 
-                        }else {
-                            ResuableCodeForAll.ShowAlert(Chefsendopt.this,"Error",task.getException().getMessage());
-
+                        if(task.isSuccessful()){
+                            Intent intent = new Intent(Delivery_VerifyPhone.this,MainMenu.class);
+                            startActivity(intent);
+                            finish();
+                        }else{
+                            Toast.makeText(Delivery_VerifyPhone.this, "Error:" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
+
 
                     }
                 });
-
     }
-
-
-
-
-
 }

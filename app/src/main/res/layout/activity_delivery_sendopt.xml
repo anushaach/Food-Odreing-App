@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img3"
-    tools:context=".ChefVerifyPhone">
-
+    android:background="@drawable/img2"
+    tools:context=".Delivery_sendopt">
 
     <LinearLayout
         android:id="@+id/linearlayout"
@@ -32,7 +31,7 @@
             android:textStyle="italic"/>
 
         <EditText
-            android:id="@+id/code"
+            android:id="@+id/code1"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginTop="15dp"
@@ -40,7 +39,7 @@
             android:ems="10"/>
 
         <Button
-            android:id="@+id/Verify"
+            android:id="@+id/Verify1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -50,7 +49,7 @@
             android:textColor="@color/white"/>
 
         <Button
-            android:id="@+id/Resendotp"
+            android:id="@+id/Resendotp1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -60,7 +59,7 @@
             android:textSize="18sp"/>
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/text1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -76,6 +75,5 @@
 
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

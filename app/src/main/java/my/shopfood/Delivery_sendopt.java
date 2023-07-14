@@ -3,7 +3,6 @@ package my.shopfood;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +24,8 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
-public class Chefsendopt extends AppCompatActivity {
+public class Delivery_sendopt extends AppCompatActivity {
+
     String verificationId;
     FirebaseAuth FAuth;
     Button verify, Resend;
@@ -33,19 +33,18 @@ public class Chefsendopt extends AppCompatActivity {
     EditText entercode;
     String phoneno;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chefsendopt);
+        setContentView(R.layout.activity_delivery_sendopt);
 
         phoneno = getIntent().getStringExtra("phonenumber").trim();
 
 
-        entercode = (EditText) findViewById(R.id.code);
-        txt = (TextView) findViewById(R.id.text);
-        Resend = (Button) findViewById(R.id.Resendotp);
-        verify=(Button) findViewById(R.id.Verifyy) ;
+        entercode = (EditText) findViewById(R.id.code1);
+        txt = (TextView) findViewById(R.id.text1);
+        Resend = (Button) findViewById(R.id.Resendotp1);
+        verify=(Button) findViewById(R.id.Verify1) ;
         FAuth = FirebaseAuth.getInstance();
         Resend.setVisibility(View.INVISIBLE);
         txt.setVisibility(View.INVISIBLE);
@@ -73,7 +72,7 @@ public class Chefsendopt extends AppCompatActivity {
             @Override
             public void onTick(long l) {
                 txt.setVisibility(View.VISIBLE);
-                txt.setText("Resend Code Within " + l / 1000 + " Seconds");
+                txt.setText("Resend Code Within "  + l / 1000 + "  Seconds");
             }
 
             @Override
@@ -112,6 +111,7 @@ public class Chefsendopt extends AppCompatActivity {
 
 
         });
+
     }
 
     private void Resendotp(String phoneno) {
@@ -155,7 +155,7 @@ public class Chefsendopt extends AppCompatActivity {
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
 
-            Toast.makeText(Chefsendopt.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(Delivery_sendopt.this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     };
 
@@ -171,20 +171,14 @@ public class Chefsendopt extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            startActivity(new Intent(Chefsendopt.this,ChefFoodPanel_BottomNavigation.class));
+                            startActivity(new Intent(Delivery_sendopt.this,DeliveryFoodPanel_BottomNavigation.class));
 
                         }else {
-                            ResuableCodeForAll.ShowAlert(Chefsendopt.this,"Error",task.getException().getMessage());
-
+                         ResuableCodeForAll.ShowAlert(Delivery_sendopt.this,"Error",task.getException().getMessage());
                         }
 
                     }
                 });
 
     }
-
-
-
-
-
 }

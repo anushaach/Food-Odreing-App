@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout
  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,12 +8,11 @@
     android:layout_height="match_parent"
     tools:context=".ChefFoodPanel_BottomNavigation">
 
-<<<<<<< HEAD
     <FrameLayout
-        android:id="@+id/fragement_container"
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/chef_bottom_navigation"/>
+        android:layout_above="@id/chef_bottom_navigation"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/chef_bottom_navigation"
@@ -21,14 +21,18 @@
         android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
         android:backgroundTint="@color/white"
-        app:itemTextColor="@color/white"
-        app:menu="@menu/chef_bottom_navigation"
-        />
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
+
+
+      />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="hi"/>
 
 
 </RelativeLayout>
-=======
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
->>>>>>> e6d2c2f (project clz)

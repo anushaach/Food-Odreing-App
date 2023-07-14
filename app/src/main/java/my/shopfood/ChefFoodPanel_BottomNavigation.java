@@ -48,7 +48,7 @@ public class ChefFoodPanel_BottomNavigation extends AppCompatActivity  implement
 
     private boolean loadcheffragment(Fragment fragment) {
         if (fragment != null){
-         getSupportFragmentManager().beginTransaction().replace(R.id.fragement_container,fragment).commit();
+         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
          return true;
         }
         return false;
