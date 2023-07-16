@@ -182,9 +182,4 @@ public class Chefsendopt extends AppCompatActivity {
                 });
 
     }
-
-
-
-
-
 }

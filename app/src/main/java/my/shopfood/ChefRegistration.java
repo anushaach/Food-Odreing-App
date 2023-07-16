@@ -84,17 +84,20 @@ public class ChefRegistration extends AppCompatActivity {
                     for (String cities : NepaliFood) {
                         list.add(cities);
                     }
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ChefRegistration.this, android.R.layout.simple_spinner_item);
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ChefRegistration.this, android.R.layout.simple_spinner_item,list);
                     Cityspin.setAdapter(arrayAdapter);
 
 
-                }
-                if (statee.equals("NewariFood")) {
+                } else if (statee.equals("Newari Food")) {
                     ArrayList<String> list = new ArrayList<>();
                     for (String cities : NewariFood) {
                         list.add(cities);
                     }
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ChefRegistration.this, android.R.layout.simple_spinner_item);
+
+
+
+
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ChefRegistration.this, android.R.layout.simple_spinner_item,list);
                     Cityspin.setAdapter(arrayAdapter);
                 }
             }
@@ -110,28 +113,30 @@ public class ChefRegistration extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Object value = adapterView.getItemAtPosition(i);
                 cityy=value.toString().trim();
-                if (cityy.equals("chowmein")){
+                if (cityy.equals("chitwan")){
                     ArrayList<String> list=new ArrayList<>();
                     for (String text : NepaliFood){
                         list.add(text);
                     }
                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ChefRegistration.this, android.R.layout.simple_spinner_item,list);
 
-                }
-                if (cityy.equals("MOMO")) {
+                } else if (cityy.equals("kathmandu")) {
+
                     ArrayList<String>list=new ArrayList<>();
                     for (String text : NepaliFood){
                         list.add(text);
-                    }
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ChefRegistration.this, android.R.layout.simple_spinner_item);
+
                 }
 
-                if (cityy.equals("Pizza")) {
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ChefRegistration.this, android.R.layout.simple_spinner_item,list);
+                } else if (cityy.equals("Pokhara")) {
                     ArrayList<String>list=new ArrayList<>();
                     for (String text : NepaliFood){
                         list.add(text);
-                    }
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ChefRegistration.this, android.R.layout.simple_spinner_item);
+                }
+
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ChefRegistration.this, android.R.layout.simple_spinner_item,list);
+                    Cityspin.setAdapter(arrayAdapter);
                 }
             }
 
