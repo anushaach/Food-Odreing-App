@@ -26,14 +26,11 @@ public class ChooseOne extends AppCompatActivity {
 
         AnimationDrawable animationDrawable=new AnimationDrawable();
 
-
         Context context = this;
         animationDrawable.addFrame(ContextCompat.getDrawable(context,R.drawable.img4),3000);
         animationDrawable.addFrame(ContextCompat.getDrawable(context,R.drawable.img1),3000);
         animationDrawable.addFrame(ContextCompat.getDrawable(context,R.drawable.img4),3000);
         animationDrawable.addFrame(ContextCompat.getDrawable(context,R.drawable.img1),3000);
-
-
 
 
         animationDrawable.setOneShot(false);
