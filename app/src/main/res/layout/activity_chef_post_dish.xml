@@ -100,7 +100,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.57"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quantity"
+        app:layout_constraintTop_toBottomOf="@+id/Quantity"
         app:layout_constraintVertical_bias="0.053">
 
         <com.google.android.material.textfield.TextInputEditText
