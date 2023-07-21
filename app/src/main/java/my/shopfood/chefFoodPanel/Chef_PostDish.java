@@ -1,8 +1,5 @@
 package my.shopfood.chefFoodPanel;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,9 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -36,7 +35,7 @@ import java.util.UUID;
 
 import my.shopfood.R;
 
-public class chef_postDish extends AppCompatActivity {
+public class Chef_PostDish extends AppCompatActivity {
 
     ImageButton imageButton;
     Button post_dish;
@@ -44,7 +43,7 @@ public class chef_postDish extends AppCompatActivity {
     TextInputLayout desc, qty, pri;
     String description, quantity, price, dishes;
     Uri imageuri;
-    private Uri mcropimageuri;
+    private Uri mCropimageuri;
     FirebaseStorage storage;
     StorageReference storageReference;
     FirebaseDatabase firebaseDatabase;
@@ -111,7 +110,7 @@ public class chef_postDish extends AppCompatActivity {
     private void uploadimage() {
 
         if (imageuri != null) {
-            final ProgressDialog progressDialog = new ProgressDialog(chef_postDish.this);
+            final ProgressDialog progressDialog = new ProgressDialog(Chef_PostDish.this);
             progressDialog.setTitle("Uploading.........");
             progressDialog.show();
             RandomUID = UUID.randomUUID().toString();
@@ -129,7 +128,7 @@ public class chef_postDish extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
 
                                     progressDialog.dismiss();
-                                    Toast.makeText(chef_postDish.this, "Dish Posted Successfully!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Chef_PostDish.this, "Dish Posted Successfully!", Toast.LENGTH_SHORT).show();
 
 
                                 }
@@ -143,7 +142,7 @@ public class chef_postDish extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     progressDialog.dismiss();
-                    Toast.makeText(chef_postDish.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Chef_PostDish.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -151,6 +150,7 @@ public class chef_postDish extends AppCompatActivity {
                     FileDownloadTask.TaskSnapshot taskSnapshot = null;
                     double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
                     progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.setMessage("Uploaded" + (int) progress + "%");
 
 
                 }
@@ -169,7 +169,7 @@ public class chef_postDish extends AppCompatActivity {
         pri.setErrorEnabled(false);
         pri.setError("");
 
-        boolean isvalidDescription = false, isValidPrice = false, isValidQuality = false, isValid = false;
+        boolean isvalidDescription = false, isValidPrice = false, isValidQuality = false, isValid = false, isValidQuantity = false;;
         if (TextUtils.isEmpty(description)) {
             desc.setErrorEnabled(true);
             desc.setError("Description is Required");
@@ -177,7 +177,7 @@ public class chef_postDish extends AppCompatActivity {
             desc.setError(null);
             isvalidDescription = true;
         }
-        boolean isValidQuantity = false;
+
         if (TextUtils.isEmpty(quantity)) {
             qty.setErrorEnabled(true);
             qty.setError("Enter number of Plates or Items");
@@ -193,5 +193,12 @@ public class chef_postDish extends AppCompatActivity {
         isValid = (isvalidDescription && isValidQuantity && isValidPrice) ? true : false;
         return isValid;
     }
+
+
+    private void onSelectImageclick(View view) {
+
+  }
+
+
 
 }

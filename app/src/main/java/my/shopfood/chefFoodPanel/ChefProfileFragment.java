@@ -50,7 +50,7 @@ public class ChefProfileFragment extends Fragment {
         postDish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(),chef_postDish.class));
+                startActivity(new Intent(getContext(), Chef_PostDish.class));
 
             }
         });

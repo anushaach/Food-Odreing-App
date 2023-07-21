@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Shopfood"
         tools:targetApi="31">
         <activity
-            android:name=".chef_postDish"
+            android:name=".chefFoodPanel.Chef_PostDish"
             android:exported="false" />
         <activity
             android:name=".Delivery_sendopt"
@@ -89,6 +89,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
