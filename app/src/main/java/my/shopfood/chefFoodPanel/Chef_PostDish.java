@@ -64,7 +64,7 @@ public class Chef_PostDish extends AppCompatActivity {
         desc = (TextInputLayout) findViewById(R.id.description);
         qty = (TextInputLayout) findViewById(R.id.Quantity);
         pri = (TextInputLayout) findViewById(R.id.price);
-        post_dish = (Button) findViewById(R.id.post_dish);
+        post_dish = (Button) findViewById(R.id.post);
         Fauth = FirebaseAuth.getInstance();
         databaseReference = firebaseDatabase.getInstance().getReference("FoodDetails");
 
