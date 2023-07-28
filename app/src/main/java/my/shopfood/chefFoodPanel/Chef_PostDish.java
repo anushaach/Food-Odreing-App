@@ -80,7 +80,14 @@ public class Chef_PostDish extends AppCompatActivity {
                     City = cheff.getCity();
                     Area = cheff.getArea();
                     imageButton = (ImageButton) findViewById(R.id.imageupload);
+
                     imageButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            onSelectImageclick(view);
+                        }
+                    });
+                    post_dish.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
 
