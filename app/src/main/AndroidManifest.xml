@@ -30,9 +30,6 @@
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".CustomerFoodPanel_BottomNavigation"
-            android:exported="false" />
-        <activity
             android:name=".Chefsendopt"
             android:exported="false" />
         <activity
@@ -44,9 +41,7 @@
         <activity
             android:name=".ChefVerifyPhone"
             android:exported="false" />
-        <activity
-            android:name=".customer_food_panel_bottom_navigation"
-            android:exported="false" />
+
         <activity
             android:name=".sendotp"
             android:exported="false" />
