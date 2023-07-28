@@ -66,6 +66,7 @@
             android:layout_height="48dp"
             android:hint="Description"
             android:textColor="@color/white"
+            android:textSize="18sp"
             android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -87,6 +88,7 @@
             android:layout_height="48dp"
             android:hint="Quantity"
             android:textColor="@color/white"
+            android:textSize="18sp"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,6 +109,7 @@
             android:layout_height="48dp"
             android:hint="Price"
             android:textColor="@color/white"
+            android:textSize="18sp"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
 

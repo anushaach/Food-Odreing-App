@@ -17,6 +17,9 @@ public class Chef {
         Postcode = postcode;
         State = state;
     }
+    public Chef (){
+
+    }
 
     public String getArea() {
         return Area;
