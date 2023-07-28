@@ -80,8 +80,14 @@ public class Chef_PostDish extends AppCompatActivity {
                     City = cheff.getCity();
                     Area = cheff.getArea();
                     imageButton = (ImageButton) findViewById(R.id.imageupload);
-
                     imageButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                          onSelectImageclick(view);
+                        }
+                    });
+
+                    post_dish.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             onSelectImageclick(view);
@@ -113,6 +119,7 @@ public class Chef_PostDish extends AppCompatActivity {
             Log.e("Error:", e.getMessage());
         }
     }
+
 
     private void uploadimage() {
 
@@ -200,11 +207,9 @@ public class Chef_PostDish extends AppCompatActivity {
         isValid = (isvalidDescription && isValidQuantity && isValidPrice) ? true : false;
         return isValid;
     }
-
-
     private void onSelectImageclick(View view) {
 
-  }
+    }
 
 
 
