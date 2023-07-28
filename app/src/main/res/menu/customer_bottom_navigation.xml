@@ -25,7 +25,7 @@
         android:title=" Track" />
 
     <item
-        android:title="Lrofile"
+        android:title="Profile"
         android:id="@+id/cust_profile"
         android:icon="@drawable/baseline_person_24"/>
 
