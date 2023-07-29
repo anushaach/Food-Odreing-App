@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.hbb20.CountryCodePicker;
 
-public class Chefloginphone extends AppCompatActivity {
+public class  Chefloginphone extends AppCompatActivity {
 
     EditText num;
     Button sendotp,signinemail;

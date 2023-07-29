@@ -1,6 +1,8 @@
 package my.shopfood.customerFoodPanel;
 
 import android.content.Context;
+import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -11,8 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DatabaseReference;
 
+import java.text.CollationElementIterator;
 import java.util.List;
 
+import my.shopfood.R;
 import my.shopfood.UpdateDishModel;
 
 public class CustomerHomeAdapter extends RecyclerView.Adapter<CustomerHomeAdapter.ViewHolder> {
@@ -30,22 +34,32 @@ public class CustomerHomeAdapter extends RecyclerView.Adapter<CustomerHomeAdapte
     @NonNull
     @Override
     public CustomerHomeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view= LayoutInflater.from(mcontext).inflate(R.layout.customer_menudish,parent,false);
+        return new CustomerHomeAdapter.ViewHolder(view);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull CustomerHomeAdapter.ViewHolder holder, int position) {
+        final UpdateDishModel updateDishModel=updateDishModelList.get(position);
+
+        holder.Dishname.setText(updateDishModel.getPrice());
+        updateDishModel.getRandomUID();
+        updateDishModel.getChefId();
+        holder.price.setText("Price:"+updateDishModel.getPrice()+"Rs");
+
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+
+        return updateDishModelList.size();
     }
 
     public class  ViewHolder extends  RecyclerView.ViewHolder{
 
+        public CollationElementIterator price;
         ImageView imageView;
         TextView Dishname, Price;
 
