@@ -23,6 +23,26 @@ public class ChefFoodPanel_BottomNavigation extends AppCompatActivity  implement
         setContentView(R.layout.activity_chef_food_panel_bottom_navigation);
     BottomNavigationView navigationView=findViewById(R.id.chef_bottom_navigation);
     navigationView.setOnNavigationItemSelectedListener(this);
+    String name= getIntent().getStringExtra("PAGE");
+    if (name!=null){
+        if (name.equalsIgnoreCase("OrderPage")){
+            loadcheffragment(new ChefPendingOrderFragment());
+
+        }else  if (name.equalsIgnoreCase("Confirmpage")){
+            loadcheffragment(new ChefOrderFragment());
+
+        }
+        else  if (name.equalsIgnoreCase("Acceptorderpage")){
+            loadcheffragment(new ChefOrderFragment());
+
+        }
+        else  if (name.equalsIgnoreCase("Deliveredpage")){
+            loadcheffragment(new ChefOrderFragment());
+
+        }else{
+            loadcheffragment(new ChefHomeFragment());
+        }
+    }
     }
 
     @Override

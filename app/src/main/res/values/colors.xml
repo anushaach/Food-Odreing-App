@@ -23,4 +23,5 @@
     <color name="DrakBlue">#250285</color>
 
     <color name="yourselectedColor">#ff0000</color>
+    <color name="colorPrimaryDark">#E62E20</color>
 </resources>
