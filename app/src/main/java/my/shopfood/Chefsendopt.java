@@ -39,7 +39,7 @@ public class Chefsendopt extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chefsendopt);
 
-        phoneno = getIntent().getStringExtra("phonenumber").trim();
+        phoneno = getIntent().getStringExtra("phone number").trim();
 
 
         entercode = (EditText) findViewById(R.id.code);
