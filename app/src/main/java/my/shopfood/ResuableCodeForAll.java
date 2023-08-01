@@ -14,7 +14,11 @@ public class ResuableCodeForAll {
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Dialog dialog = null;
+                Dialog dialog = new Dialog(context); // Initialize the dialog object
+
+// Some code that properly sets up the dialog...
+
+// Then in the onClick method:
                 dialog.dismiss();
             }
         }).setTitle(title).setMessage(message).show();

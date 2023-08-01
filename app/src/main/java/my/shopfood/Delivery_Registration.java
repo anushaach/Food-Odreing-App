@@ -86,7 +86,7 @@ public class Delivery_Registration extends AppCompatActivity {
 
 
                 }
-                if (statee.equals("NewariFood")) {
+                else if (statee.equals("NewariFood")) {
                     ArrayList<String> list = new ArrayList<>();
                     for (String cities : NewariFood) {
                         list.add(cities);

@@ -41,7 +41,7 @@ public class ChefHomeAdapter extends RecyclerView. Adapter<ChefHomeAdapter.ViewH
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(mcont.UpdateDelete_Dish.class);
+                Intent intent=new Intent(mcont,UpdateDelete_Dish.class);
                 intent.putExtra("updatedeletedish",updateDishModel.getRandomUID());
                 mcont.startActivity(intent);
             }
