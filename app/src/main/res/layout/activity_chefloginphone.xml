@@ -42,6 +42,8 @@
                 android:layout_width="132dp"
                 android:layout_height="48dp"
                 android:id="@+id/number"
+                android:text="Enter Number"
+                android:textColor="@color/drakgray"
                 android:layout_marginLeft="8dp"
                 android:inputType="number"/>
         </LinearLayout>

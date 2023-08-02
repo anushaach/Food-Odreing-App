@@ -17,58 +17,56 @@
             android:name=".PendingOrder"
             android:exported="false" />
         <activity
-            android:name=".PayableOrders"
+            android:name=".customerFoodPanel.PayableOrders"
             android:exported="false" />
         <activity
-            android:name=".OrderDish"
+            android:name=".customerFoodPanel.OrderDish"
             android:exported="false" />
         <activity
-            android:name=".Delivery_shipOrder_View"
+            android:name=".deliveryFoodPanel.Delivery_shipOrder_View"
             android:exported="false" />
         <activity
-            android:name=".Delivery_PendingOrder_View"
+            android:name=".deliveryFoodPanel.Delivery_PendingOrder_View"
             android:exported="false" />
         <activity
-            android:name=".Delivery_ShippingOrder"
+            android:name=".deliveryFoodPanel.Delivery_ShippingOrder"
             android:exported="false" />
         <activity
-            android:name=".Customer_PhoneNumber"
+            android:name=".customerFoodPanel.Customer_PhoneNumber"
             android:exported="false" />
         <activity
-            android:name=".Customer_Payment_OPT"
+            android:name=".customerFoodPanel.Customer_Payment_OPT"
             android:exported="false" />
         <activity
-            android:name=".CustomerPhoneSendOPT"
+            android:name=".customerFoodPanel.CustomerPhoneSendOPT"
             android:exported="false" />
         <activity
-            android:name=".customerPassword"
+            android:name=".customerFoodPanel.customerPassword"
             android:exported="false" />
         <activity
-            android:name=".Customer_Online_Payment"
+            android:name=".customerFoodPanel.Customer_Online_Payment"
+            android:exported="false" />
+       
+        <activity
+            android:name=".customerFoodPanel.Customer_ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".CustomerOnlinePayment"
+            android:name=".chefFoodPanel.Chef_Prepared_Order_View"
             android:exported="false" />
         <activity
-            android:name=".Customer_ForgotPassword"
+            android:name=".chefFoodPanel.Chef_Prepared_Order"
             android:exported="false" />
         <activity
-            android:name=".Chef_Prepared_Order_View"
+            android:name=".chefFoodPanel.Chef_Order_Tobe_Prepared_View"
             android:exported="false" />
         <activity
-            android:name=".Chef_Prepared_Order"
+            android:name=".chefFoodPanel.Chef_Order_Tobe_Perpared"
             android:exported="false" />
         <activity
-            android:name=".Chef_Order_Tobe_Prepared_View"
+            android:name=".chefFoodPanel.chef_order_dishes"
             android:exported="false" />
         <activity
-            android:name=".Chef_Order_Tobe_Perpared"
-            android:exported="false" />
-        <activity
-            android:name=".chef_order_dishes"
-            android:exported="false" />
-        <activity
-            android:name=".updatedeletedish"
+            android:name=".chefFoodPanel.UpdateDelete_Dish"
             android:exported="false" />
         <activity
             android:name=".chefFoodPanel.Chef_PostDish"

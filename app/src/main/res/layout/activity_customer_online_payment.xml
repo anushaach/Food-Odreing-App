@@ -53,7 +53,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:hint="Name on card"
             android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -72,7 +72,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:maxLength="16"
             android:hint="card number"
             android:inputType="number"/>
@@ -103,7 +103,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:hint="Expiry Date(MM/YY)"
                 android:inputType="date"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -123,7 +123,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:hint="CVV"
                 android:maxLength="3"
                 android:inputType="number"/>

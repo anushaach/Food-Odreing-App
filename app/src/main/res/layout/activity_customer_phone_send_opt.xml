@@ -11,6 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:ems="10"
+        android:text="Enter OPT number"
+        android:textColor="@color/drakgray"
         android:layout_marginRight="100dp"
         android:layout_marginLeft="100dp"
         android:inputType="number"
