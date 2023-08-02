@@ -14,6 +14,60 @@
         android:theme="@style/Theme.Shopfood"
         tools:targetApi="31">
         <activity
+            android:name=".PendingOrder"
+            android:exported="false" />
+        <activity
+            android:name=".PayableOrders"
+            android:exported="false" />
+        <activity
+            android:name=".OrderDish"
+            android:exported="false" />
+        <activity
+            android:name=".Delivery_shipOrder_View"
+            android:exported="false" />
+        <activity
+            android:name=".Delivery_PendingOrder_View"
+            android:exported="false" />
+        <activity
+            android:name=".Delivery_ShippingOrder"
+            android:exported="false" />
+        <activity
+            android:name=".Customer_PhoneNumber"
+            android:exported="false" />
+        <activity
+            android:name=".Customer_Payment_OPT"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerPhoneSendOPT"
+            android:exported="false" />
+        <activity
+            android:name=".customerPassword"
+            android:exported="false" />
+        <activity
+            android:name=".Customer_Online_Payment"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerOnlinePayment"
+            android:exported="false" />
+        <activity
+            android:name=".Customer_ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".Chef_Prepared_Order_View"
+            android:exported="false" />
+        <activity
+            android:name=".Chef_Prepared_Order"
+            android:exported="false" />
+        <activity
+            android:name=".Chef_Order_Tobe_Prepared_View"
+            android:exported="false" />
+        <activity
+            android:name=".Chef_Order_Tobe_Perpared"
+            android:exported="false" />
+        <activity
+            android:name=".chef_order_dishes"
+            android:exported="false" />
+        <activity
             android:name=".updatedeletedish"
             android:exported="false" />
         <activity
