@@ -57,7 +57,11 @@ public class MainActivity extends AppCompatActivity {
                     if (Fauth.getCurrentUser().isEmailVerified()) {
                         Fauth = FirebaseAuth.getInstance();
 
-                        databaseReference = FirebaseDatabase.getInstance().getReference("User").child(FirebaseAuth.getInstance() + "/Role");
+
+
+
+                        String userId = Fauth.getCurrentUser().getUid();
+                        databaseReference = FirebaseDatabase.getInstance().getReference("User").child(userId).child("Role");
                         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {

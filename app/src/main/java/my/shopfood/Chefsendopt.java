@@ -39,7 +39,17 @@ public class Chefsendopt extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chefsendopt);
 
-        phoneno = getIntent().getStringExtra("phone number").trim();
+
+
+        if (getIntent().hasExtra("phone number")) {
+            phoneno = getIntent().getStringExtra("phone number").trim();
+        } else {
+            // If the "phone number" extra is missing, show an error message and finish the activity.
+            Toast.makeText(this, "Phone number not provided.", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
 
 
         entercode = (EditText) findViewById(R.id.code);

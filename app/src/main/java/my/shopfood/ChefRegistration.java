@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -42,6 +43,7 @@ public class ChefRegistration extends AppCompatActivity {
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
     String fname, lname, emailid, password, confpassword, mobile, house, Area, Pincode, role = "Chef", statee, cityy;
+    private Context context;
 
 
     @Override
@@ -218,9 +220,10 @@ public class ChefRegistration extends AppCompatActivity {
 
                                                                         @Override
                                                                         public void onClick(DialogInterface dialogInterface, int i) {
+                                                                         
 
-
-                                                                            Dialog dialog = null;
+                                                                            Dialog dialog = new Dialog(context);
+                                                                            dialog.show();
                                                                             dialog.dismiss();
 
                                                                             String phonenumber = Cpp.getSelectedCountryCodeWithPlus() + mobile;
