@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -121,7 +123,7 @@
             android:exported="false" />
         <activity
             android:name=".Login"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ChefRegistration"
             android:exported="false" />
@@ -136,6 +138,9 @@
             android:exported="false" />
         <activity
             android:name=".MainMenu"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerFoodPanel_BottomNavigation"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

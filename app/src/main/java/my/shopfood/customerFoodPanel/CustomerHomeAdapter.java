@@ -1,7 +1,6 @@
 package my.shopfood.customerFoodPanel;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,13 +39,13 @@ public class CustomerHomeAdapter extends RecyclerView.Adapter<CustomerHomeAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomerHomeAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final UpdateDishModel updateDishModel=updateDishModelList.get(position);
 
         holder.Dishname.setText(updateDishModel.getPrice());
         updateDishModel.getRandomUID();
         updateDishModel.getChefId();
-        holder.price.setText("Price:"+updateDishModel.getPrice()+"Rs");
+        holder.Price.setText("Price:"+updateDishModel.getPrice()+"Rs");
 
 
     }
