@@ -39,6 +39,9 @@
         <activity
             android:name=".customerFoodPanel.Customer_Payment_OPT"
             android:exported="false" />
+
+        <activity android:name=".CustomerFoodPanel_BottomNavigation"
+            android:exported="false"/>
         <activity
             android:name=".customerFoodPanel.CustomerPhoneSendOPT"
             android:exported="false" />
@@ -58,6 +61,9 @@
         <activity
             android:name=".chefFoodPanel.Chef_Prepared_Order"
             android:exported="false" />
+
+        <activity android:name="ChefFoodPanel_BottomNavigation"
+            android:exported="false"/>
         <activity
             android:name=".chefFoodPanel.Chef_Order_Tobe_Prepared_View"
             android:exported="false" />
@@ -67,9 +73,9 @@
         <activity
             android:name=".chefFoodPanel.chef_order_dishes"
             android:exported="false" />
-        <activity
-            android:name=".chefFoodPanel.UpdateDelete_Dish"
-            android:exported="false" />
+
+
+
         <activity
             android:name=".chefFoodPanel.Chef_PostDish"
             android:exported="false" />
@@ -94,9 +100,7 @@
         <activity
             android:name=".ChefForgotPassword"
             android:exported="false" />
-        <activity
-            android:name=".ChefFoodPanel_BottomNavigation"
-            android:exported="false" />
+
         <activity
             android:name=".ChefVerifyPhone"
             android:exported="false" />
@@ -139,9 +143,7 @@
         <activity
             android:name=".MainMenu"
             android:exported="false" />
-        <activity
-            android:name=".CustomerFoodPanel_BottomNavigation"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

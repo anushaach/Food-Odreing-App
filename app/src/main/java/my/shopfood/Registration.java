@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Registration extends AppCompatActivity {
-    String[] NewariFood = {"Yomari", "sukuti"};
+    String[] Chitwan = {"bharatpur", "tadi"};
 
     TextInputLayout Fname, Lname, Email, Pass, CPass, mobileno, localaddress, area, pincode;
     Spinner Statespin, Cityspin;
@@ -45,6 +45,10 @@ public class Registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
+
+
+
 
         Fname = (TextInputLayout) findViewById(R.id.Fname);
         Lname = (TextInputLayout) findViewById(R.id.Lname);
@@ -72,7 +76,7 @@ public class Registration extends AppCompatActivity {
                 statee = value.toString().trim();
                 if (statee.equals("NepaliFood")) {
                     ArrayList<String> list = new ArrayList<>();
-                    for (String cities : NewariFood) {
+                    for (String cities : Chitwan) {
                         list.add(cities);
                     }
                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Registration.this, android.R.layout.simple_spinner_item);
@@ -82,7 +86,7 @@ public class Registration extends AppCompatActivity {
                 }
                 if (statee.equals("NewariFood")) {
                     ArrayList<String> list = new ArrayList<>();
-                    for (String cities : NewariFood) {
+                    for (String cities : Chitwan) {
                         list.add(cities);
                     }
                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Registration.this, android.R.layout.simple_spinner_item);
@@ -103,7 +107,7 @@ public class Registration extends AppCompatActivity {
                 cityy = value.toString().trim();
                 if (cityy.equals("chowmein")) {
                     ArrayList<String> list = new ArrayList<>();
-                    for (String text : NewariFood) {
+                    for (String text : Chitwan) {
                         list.add(text);
                     }
                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Registration.this, android.R.layout.simple_spinner_item, list);
@@ -111,7 +115,7 @@ public class Registration extends AppCompatActivity {
                 }
                 if (cityy.equals("MOMO")) {
                     ArrayList<String> list = new ArrayList<>();
-                    for (String text : NewariFood) {
+                    for (String text : Chitwan) {
                         list.add(text);
                     }
                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Registration.this, android.R.layout.simple_spinner_item);
@@ -119,7 +123,7 @@ public class Registration extends AppCompatActivity {
 
                 if (cityy.equals("Pizza")) {
                     ArrayList<String> list = new ArrayList<>();
-                    for (String text : NewariFood) {
+                    for (String text : Chitwan) {
                         list.add(text);
                     }
                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Registration.this, android.R.layout.simple_spinner_item);
