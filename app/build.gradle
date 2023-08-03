@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'my.shopfood'
-    compileSdk 34
+    compileSdk 33
 
     defaultConfig {
         applicationId "my.shopfood"
         minSdk 24
-        targetSdk 34
+        targetSdk 33
         versionCode 1
         versionName "1.0"
        
@@ -59,6 +59,8 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    implementation 'androidx.browser:browser:1.2.0'
 
 
 

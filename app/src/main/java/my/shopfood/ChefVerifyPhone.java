@@ -20,6 +20,7 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
@@ -120,16 +121,19 @@ public class ChefVerifyPhone extends AppCompatActivity {
     }
 
     private void sendVerificationcode(String phoneno) {
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phoneno,
-                60,
-                TimeUnit.SECONDS,
-                (Activity) TaskExecutors.MAIN_THREAD,
-                mCallback
-        );
+        PhoneAuthOptions options=PhoneAuthOptions.newBuilder(FAuth)
+                .setPhoneNumber(phoneno)
+                .setTimeout(60l,TimeUnit.SECONDS)
+                .setActivity(this)
+                .setCallbacks(mCallback)
+                .build();
+        PhoneAuthProvider.verifyPhoneNumber(options);
+
+
 
 
     }
+
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {

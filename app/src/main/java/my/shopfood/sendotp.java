@@ -40,6 +40,7 @@ public class sendotp extends AppCompatActivity {
 
 
         phoneno = getIntent().getStringExtra("phonenumber").trim();
+        sendVerificationcode(phoneno);
 
 
         entercode = (EditText) findViewById(R.id.codee);
@@ -51,7 +52,7 @@ public class sendotp extends AppCompatActivity {
         verify=(Button) findViewById(R.id.Verifyy);
 
 
-        sendVerificationcode(phoneno);
+
 
 verify.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -73,9 +74,9 @@ verify.setOnClickListener(new View.OnClickListener() {
         new CountDownTimer(60000, 1000){
 
             @Override
-            public void onTick(long l) {
+            public void onTick(long millisUntilFinished) {
                 txt.setVisibility(View.VISIBLE);
-                txt.setText("Resend Code Within " + l / 1000 + " Seconds");
+                txt.setText("Resend Code Within " + millisUntilFinished / 1000 + " Seconds");
             }
 
             @Override
@@ -86,6 +87,27 @@ verify.setOnClickListener(new View.OnClickListener() {
 
             }
         }.start();
+
+        Resend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Resend.setVisibility(View.INVISIBLE);
+                Resendotp(phoneno);
+                new CountDownTimer(60000,1000){
+                    public void onTick(long millisUntilFinished){
+                        txt.setVisibility(View.VISIBLE);
+                        txt.setText("Resend Code within"+ millisUntilFinished/1000+"Seconds");
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+
+                };
+            }
+        });
 
     }
 
@@ -127,6 +149,8 @@ verify.setOnClickListener(new View.OnClickListener() {
         }
 
 
+
+
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
 
@@ -146,6 +170,7 @@ verify.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+
                             startActivity(new Intent(sendotp.this,CustomerFoodPanel_BottomNavigation.class));
 
                         }else {

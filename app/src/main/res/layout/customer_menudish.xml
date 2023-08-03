@@ -22,7 +22,8 @@
             android:layout_height="180dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/burger"/>
+            android:src="@drawable/burger"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"

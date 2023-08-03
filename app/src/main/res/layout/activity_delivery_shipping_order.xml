@@ -82,7 +82,7 @@
                 android:layout_height="35dp"
                 android:layout_marginLeft="15dp"
                 android:gravity="center_vertical"
-               android:fontFamily="cursive"
+                android:fontFamily="cursive"
                 android:text="Chef Name"
                 android:textStyle="bold"
                 android:textColor="#FA3E03"
@@ -162,5 +162,4 @@
 
         </LinearLayout>
     </LinearLayout>
-
 </RelativeLayout>
