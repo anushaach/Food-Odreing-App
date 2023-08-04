@@ -30,7 +30,8 @@ public class ChefProfileFragment extends Fragment {
         getActivity().setTitle("Post Dish");
 
         AnimationDrawable animationDrawable=new AnimationDrawable();
-        Context context = null;
+        Context context = requireContext(); // or getContext()
+
         animationDrawable.addFrame(ContextCompat.getDrawable(context,R.drawable.img4),3000);
         animationDrawable.addFrame(ContextCompat.getDrawable(context,R.drawable.img1),3000);
         animationDrawable.addFrame(ContextCompat.getDrawable(context,R.drawable.img4),3000);
