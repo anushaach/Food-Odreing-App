@@ -45,4 +45,20 @@ public class ResuableCodeForAll {
 
     public static void ShowAlert(Delivery_sendopt delivery_sendopt, String error, String message) {
     }
+
+    public static void ShowAlert(ForgotPassword forgotPassword, String s) {
+    }
+
+    public static void ShowAlert(ForgotPassword forgotPassword, String error, String message) {
+    }
+
+    public static void ShowAlert(DeliveryForgotPassword deliveryForgotPassword, String s) {
+    }
+
+    public static void ShowAlert(DeliveryForgotPassword deliveryForgotPassword, String error, String message) {
+    }
+
+    public static void ShowAlert(ChefForgotPassword chefForgotPassword, String s, String s1) {
+    }
 }
+

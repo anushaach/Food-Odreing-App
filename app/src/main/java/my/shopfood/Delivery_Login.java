@@ -31,7 +31,7 @@ public class Delivery_Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_login);
 
-        try {
+
             email = (TextInputLayout) findViewById(R.id.Demail);
             pass = (TextInputLayout)  findViewById(R.id.Dpassword);
             Signin = (Button) findViewById(R.id.Loginbtn);
@@ -86,7 +86,8 @@ public class Delivery_Login extends AppCompatActivity {
             signup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(Delivery_Login.this,Delivery_Registration.class));
+                    Intent Register=new Intent(Delivery_Login.this,Delivery_Registration.class);
+                    startActivity(Register);
                     finish();
                 }
             });
@@ -101,17 +102,16 @@ public class Delivery_Login extends AppCompatActivity {
             Signinphone.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(Delivery_Login.this,Delivery_Loginphone.class));
+                    Intent q=new Intent(Delivery_Login.this,Delivery_Loginphone.class);
+                    startActivity(q);
                     finish();
                 }
             });
 
 
         }
-        catch (Exception e){
-            Toast.makeText(this, "e.getMessage()", Toast.LENGTH_LONG).show();
-        }
-    }
+
+
 
     String emailpattern = "[a-zA-z0-9._-]+@[a-z]+\\.+[a-z]+";
 

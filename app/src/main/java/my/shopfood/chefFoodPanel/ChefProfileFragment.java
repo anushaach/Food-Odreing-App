@@ -56,10 +56,6 @@ public class ChefProfileFragment extends Fragment {
             }
         });
 
-
-
-
-
         return v;
     }
 }

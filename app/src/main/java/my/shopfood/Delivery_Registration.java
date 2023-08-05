@@ -35,7 +35,7 @@ public class Delivery_Registration extends AppCompatActivity {
     String[] NewariFood = {"Kathamdu", "Pokhara"};
 
     TextInputLayout Fname, Lname, Email, Pass, CPass, mobileno, houseno, area, pincode;
-    Spinner Statespin, Cityspin;
+    Spinner Statespin, Cityspin,Suburban;
     Button signup, Emaill, phone;
     CountryCodePicker Cpp;
     FirebaseAuth FAuth;
@@ -68,13 +68,17 @@ public class Delivery_Registration extends AppCompatActivity {
         Emaill = (Button) findViewById(R.id.emaillid);
         phone = (Button) findViewById(R.id.Phonenumber);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        final ProgressDialog mDialog=new ProgressDialog(Delivery_Registration.this);
+        mDialog.setCancelable(false);
+        mDialog.setCanceledOnTouchOutside(false);
+
+
 
         Statespin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
 
-                Object value = adapterView.getItemAtPosition(i);
+                Object value = adapterView.getItemAtPosition(position);
                 statee = value.toString().trim();
                 if (statee.equals("NepaliFood")) {
                     ArrayList<String> list = new ArrayList<>();
@@ -113,6 +117,7 @@ public class Delivery_Registration extends AppCompatActivity {
                         list.add(text);
                     }
                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Delivery_Registration.this, android.R.layout.simple_spinner_item,list);
+                    Suburban.setAdapter(arrayAdapter);
 
                 }
                 if (cityy.equals("MOMO")) {
@@ -140,8 +145,8 @@ public class Delivery_Registration extends AppCompatActivity {
 
 
 
-        databaseReference = firebaseDatabase.getInstance().getReference("Chef");
-        FirebaseApp.initializeApp(this);
+        databaseReference = firebaseDatabase.getInstance().getReference("DeliveryPerson");
+
         FAuth = FirebaseAuth.getInstance();
 
         signup.setOnClickListener(new View.OnClickListener() {
@@ -158,9 +163,7 @@ public class Delivery_Registration extends AppCompatActivity {
                 Pincode = pincode.getEditText().getText().toString().trim();
 
                 if (isValid()) {
-                    final ProgressDialog mDialog = new ProgressDialog(Delivery_Registration.this);
-                    mDialog.setCancelable(false);
-                    mDialog.setCanceledOnTouchOutside(false);
+
                     mDialog.setMessage("Registration in progress please wait............");
                     mDialog.show();
 

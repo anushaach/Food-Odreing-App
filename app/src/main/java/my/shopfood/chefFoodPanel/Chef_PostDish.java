@@ -137,7 +137,8 @@ public class Chef_PostDish extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             FoodDetails info = new FoodDetails(dishes, quantity, price, description, String.valueOf(uri), RandomUID, ChefId);
-                            Task<Void> foodDetails = firebaseDatabase.getInstance().getReference("FoodDetails").child(State).child(City).child(Area).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(RandomUID).setValue(info).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            firebaseDatabase.getInstance().getReference("FoodDetails").child(State).child(City).child(Area).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(RandomUID)
+                                    .setValue(info).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
 
@@ -161,8 +162,7 @@ public class Chef_PostDish extends AppCompatActivity {
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                    FileDownloadTask.TaskSnapshot taskSnapshot = null;
-                    double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                    double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
                     progressDialog.setCanceledOnTouchOutside(false);
                     progressDialog.setMessage("Uploaded" + (int) progress + "%");
 
@@ -208,6 +208,7 @@ public class Chef_PostDish extends AppCompatActivity {
         return isValid;
     }
     private void onSelectImageclick(View view) {
+
 
     }
 

@@ -36,7 +36,7 @@ public class ChefRegistration extends AppCompatActivity {
     String[] NewariFood = {"Kathamdu", "Pokhara"};
 
     TextInputLayout Fname, Lname, Email, Pass, CPass, mobileno, houseno, area, pincode;
-    Spinner Statespin, Cityspin;
+    Spinner Statespin, Cityspin,Suburban;
     Button signup, Emaill, phone;
     CountryCodePicker Cpp;
     FirebaseAuth FAuth;
@@ -72,7 +72,7 @@ public class ChefRegistration extends AppCompatActivity {
         Emaill = (Button) findViewById(R.id.email);
         phone = (Button) findViewById(R.id.phone);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
+
 
 
         Statespin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -90,7 +90,7 @@ public class ChefRegistration extends AppCompatActivity {
                     Cityspin.setAdapter(arrayAdapter);
 
 
-                } else if (statee.equals("Newari Food")) {
+                }  if (statee.equals("Newari Food")) {
                     ArrayList<String> list = new ArrayList<>();
                     for (String cities : NewariFood) {
                         list.add(cities);
@@ -122,6 +122,7 @@ public class ChefRegistration extends AppCompatActivity {
                     }
                     ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(ChefRegistration.this, android.R.layout.simple_spinner_item,list);
 
+
                 } else if (cityy.equals("kathmandu")) {
 
                     ArrayList<String>list=new ArrayList<>();
@@ -151,7 +152,7 @@ public class ChefRegistration extends AppCompatActivity {
 
 
         databaseReference = firebaseDatabase.getInstance().getReference("Chef");
-        FirebaseApp.initializeApp(this);
+
         FAuth = FirebaseAuth.getInstance();
 
         signup.setOnClickListener(new View.OnClickListener() {

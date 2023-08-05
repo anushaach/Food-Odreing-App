@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ChefLogin extends AppCompatActivity {
 
     TextInputLayout email, pass;
-    Button Signin, Signinphone;
+    Button Signout, Signinphone;
     TextView Forgotpassword, signup;
     FirebaseAuth FAuth;
     String emailid, pwd;
@@ -34,14 +34,14 @@ public class ChefLogin extends AppCompatActivity {
         try {
             email = (TextInputLayout) findViewById(R.id.Lemail);
             pass = (TextInputLayout)  findViewById(R.id.Lpassword);
-            Signin = (Button) findViewById(R.id.button4);
+            Signout = (Button) findViewById(R.id.button4);
             signup = (TextView) findViewById(R.id.textView3);
             Forgotpassword =(TextView) findViewById(R.id.forgotpass);
             Signinphone = (Button) findViewById(R.id.btnphone);
 
             FAuth = FirebaseAuth.getInstance();
 
-            Signin.setOnClickListener(new View.OnClickListener() {
+            Signout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     emailid = email.getEditText().getText().toString().trim();

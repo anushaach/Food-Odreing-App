@@ -22,9 +22,9 @@ public class Login extends AppCompatActivity {
 
     TextInputLayout email, pass;
     Button Signin, Signinphone;
-    TextView Forgotpassword, signup;
+    TextView Forgotpassword, txt;
     FirebaseAuth FAuth;
-    String emailid, pwd;
+    String em, pwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class Login extends AppCompatActivity {
             email = (TextInputLayout) findViewById(R.id.Lemail);
             pass = (TextInputLayout)  findViewById(R.id.Lpassword);
             Signin = (Button) findViewById(R.id.button4);
-            signup = (TextView) findViewById(R.id.textView3);
+            txt = (TextView) findViewById(R.id.textView3);
             Forgotpassword =(TextView) findViewById(R.id.forgotpass);
             Signinphone = (Button) findViewById(R.id.btnphone);
 
@@ -44,17 +44,17 @@ public class Login extends AppCompatActivity {
             Signin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    emailid = email.getEditText().getText().toString().trim();
+                    em = email.getEditText().getText().toString().trim();
                     pwd = pass.getEditText().getText().toString().trim();
 
                     if(isValid()){
                         final ProgressDialog mDialog = new ProgressDialog(Login.this);
                         mDialog.setCanceledOnTouchOutside(false);
                         mDialog.setCancelable(false);
-                        mDialog.setMessage("Sign In Please Wait.............");
+                        mDialog.setMessage("Logging Please Wait.............");
                         mDialog.show();
 
-                        FAuth.signInWithEmailAndPassword(emailid,pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        FAuth.signInWithEmailAndPassword(em,pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
@@ -83,11 +83,12 @@ public class Login extends AppCompatActivity {
 
                 }
             });
-            signup.setOnClickListener(new View.OnClickListener() {
+            txt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(Login.this,Registration.class));
-                    finish();
+                    Intent Register=new Intent(Login.this,Registration.class);
+
+                    startActivity(Register);
                 }
             });
 
@@ -122,11 +123,11 @@ public class Login extends AppCompatActivity {
         pass.setError("");
 
         boolean isValid = false, isValidemail= false, isValidpassword = false;
-        if (TextUtils.isEmpty(emailid)) {
+        if (TextUtils.isEmpty(em)) {
             email.setErrorEnabled(true);
             email.setError("Email is required");
         }else{
-            if(emailid.matches(emailpattern)){
+            if(em.matches(emailpattern)){
                 isValidemail=true;
             }else {
                 email.setErrorEnabled(true);

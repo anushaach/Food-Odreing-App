@@ -29,7 +29,7 @@ public class verify_phone extends AppCompatActivity {
     String verificationId;
     FirebaseAuth FAuth;
 
-    Button verify , Resend;
+    Button verify = (Button) findViewById(R.id.Verify), Resend;
     TextView txt;
     EditText entercode;
     String phoneno;
@@ -50,6 +50,7 @@ public class verify_phone extends AppCompatActivity {
         txt.setVisibility(View.INVISIBLE);
 
         sendVerificationcode(phoneno);
+        verify = (Button) findViewById(R.id.Verifyy);
 
         verify.setOnClickListener(new View.OnClickListener() {
             @Override

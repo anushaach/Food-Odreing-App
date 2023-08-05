@@ -20,6 +20,7 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
@@ -48,6 +49,7 @@ public class Delivery_sendopt extends AppCompatActivity {
         FAuth = FirebaseAuth.getInstance();
         Resend.setVisibility(View.INVISIBLE);
         txt.setVisibility(View.INVISIBLE);
+        verify=(Button)findViewById(R.id.Verify1);
 
 
         sendVerificationcode(phoneno);
@@ -121,13 +123,12 @@ public class Delivery_sendopt extends AppCompatActivity {
     }
 
     private void sendVerificationcode(String phoneno) {
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phoneno,
-                60,
-                TimeUnit.SECONDS,
-                (Activity) TaskExecutors.MAIN_THREAD,
-                mCallback
-        );
+        PhoneAuthOptions options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
+                .setPhoneNumber(phoneno)
+                .setTimeout(60L, TimeUnit.SECONDS)
+                .setActivity(this)
+                .setCallbacks(mCallback).build();
+        PhoneAuthProvider.verifyPhoneNumber(options);
 
 
     }
@@ -171,8 +172,9 @@ public class Delivery_sendopt extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            startActivity(new Intent(Delivery_sendopt.this,DeliveryFoodPanel_BottomNavigation.class));
-
+                         Intent intent=new Intent(Delivery_sendopt.this,DeliveryFoodPanel_BottomNavigation.class);
+                         startActivity(intent);
+                         finish();
                         }else {
                          ResuableCodeForAll.ShowAlert(Delivery_sendopt.this,"Error",task.getException().getMessage());
                         }

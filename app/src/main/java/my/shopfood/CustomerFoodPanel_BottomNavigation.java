@@ -9,7 +9,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import my.shopfood.customerFoodPanel.CustomerCartFragment;
 import my.shopfood.customerFoodPanel.CustomerHomeFragment;
@@ -24,6 +29,7 @@ public class CustomerFoodPanel_BottomNavigation extends AppCompatActivity implem
         setContentView(R.layout.activity_customer_food_panel_bottom_navigation);
         BottomNavigationView navigationView=findViewById(R.id.bottom_navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
+        UpdateToken();
         String name=getIntent().getStringExtra("PAGE");
         FragmentManager fragmentManager=getSupportFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
@@ -40,6 +46,18 @@ public class CustomerFoodPanel_BottomNavigation extends AppCompatActivity implem
         }else {
             loadragment(new CustomerHomeFragment());
         }
+    }
+
+    private void UpdateToken(){
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete(@NonNull Task<String> task) {
+                if (task.isComplete()){
+                    String token=task.getResult();
+                    FirebaseDatabase.getInstance().getReference("Tokens").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token);
+                }
+            }
+        });
     }
 
     @Override
