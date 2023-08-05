@@ -110,6 +110,7 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
                         updateDishModelList.add(updateDishModel);
                     }
                 }
+                ArrayList<UpdateDishModel> UpdateDishModel = new ArrayList<>();
                 adapter = new CustomerHomeAdapter(getContext(), UpdateDishModel);
                 recyclerView.setAdapter(adapter);
                 swipeRefreshLayout.setRefreshing(false);
