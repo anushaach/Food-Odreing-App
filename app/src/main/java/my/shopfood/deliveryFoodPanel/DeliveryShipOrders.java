@@ -1,9 +1,9 @@
-package my.shopfood.chefFoodPanel;
+package my.shopfood.deliveryFoodPanel;
 
-public class ChefWaitingOrders {
+public class DeliveryShipOrders {
     private String ChefId,DishId,DishName,DishPrice,DishQuantity,RandomUID,TotalPrice,UserId;
 
-    public ChefWaitingOrders(String chefId, String dishId, String dishName, String dishPrice, String dishQuantity, String randomUID, String totalPrice, String userId) {
+    public DeliveryShipOrders(String chefId, String dishId, String dishName, String dishPrice, String dishQuantity, String randomUID, String totalPrice, String userId) {
         ChefId = chefId;
         DishId = dishId;
         DishName = dishName;
@@ -14,7 +14,7 @@ public class ChefWaitingOrders {
         UserId = userId;
     }
 
-    public ChefWaitingOrders()
+    public DeliveryShipOrders()
     {
 
     }

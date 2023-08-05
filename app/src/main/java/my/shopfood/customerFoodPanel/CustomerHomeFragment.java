@@ -1,8 +1,5 @@
 package my.shopfood.customerFoodPanel;
 
-import android.annotation.SuppressLint;
-import android.hardware.Camera;
-import android.net.sip.SipSession;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -107,7 +104,7 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
                         updateDishModelList.add(updateDishModel);
                     }
                 }
-                adapter = new CustomerHomeAdapter(getContext(), updateDishModelList);
+                adapter = new CustomerHomeAdapter(getContext(), UpdateDishModel);
                 recyclerView.setAdapter(adapter);
                 swipeRefreshLayout.setRefreshing(false);
 

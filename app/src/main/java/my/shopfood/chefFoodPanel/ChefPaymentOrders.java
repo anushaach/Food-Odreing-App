@@ -1,9 +1,10 @@
 package my.shopfood.chefFoodPanel;
 
-public class ChefWaitingOrders {
+public class ChefPaymentOrders {
+
     private String ChefId,DishId,DishName,DishPrice,DishQuantity,RandomUID,TotalPrice,UserId;
 
-    public ChefWaitingOrders(String chefId, String dishId, String dishName, String dishPrice, String dishQuantity, String randomUID, String totalPrice, String userId) {
+    public ChefPaymentOrders(String chefId, String dishId, String dishName, String dishPrice, String dishQuantity, String randomUID, String totalPrice, String userId) {
         ChefId = chefId;
         DishId = dishId;
         DishName = dishName;
@@ -14,7 +15,7 @@ public class ChefWaitingOrders {
         UserId = userId;
     }
 
-    public ChefWaitingOrders()
+    public ChefPaymentOrders()
     {
 
     }

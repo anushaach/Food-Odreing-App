@@ -66,4 +66,5 @@ public class ChefOrderTobePreparedAdapter extends RecyclerView.Adapter<ChefOrder
             grandtotalprice = itemView.findViewById(R.id.Grandtotalprice);
             Vieworder = itemView.findViewById(R.id.View_order);
         }
+    }
 }

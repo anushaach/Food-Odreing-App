@@ -16,7 +16,7 @@ import java.text.CollationElementIterator;
 import java.util.List;
 
 import my.shopfood.R;
-import my.shopfood.UpdateDishModel;
+import my.shopfood.chefFoodPanel.UpdateDishModel;
 
 public class CustomerHomeAdapter extends RecyclerView.Adapter<CustomerHomeAdapter.ViewHolder> {
     private Context mcontext;

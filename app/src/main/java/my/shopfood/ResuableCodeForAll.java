@@ -1,6 +1,7 @@
 package my.shopfood;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 
 import androidx.appcompat.app.AlertDialog;
@@ -49,7 +50,7 @@ public class ResuableCodeForAll {
     public static void ShowAlert(ForgotPassword forgotPassword, String s) {
     }
 
-    public static void ShowAlert(ForgotPassword forgotPassword, String error, String message) {
+    public static void ShowAlert(Context forgotPassword, String error, String message) {
     }
 
     public static void ShowAlert(DeliveryForgotPassword deliveryForgotPassword, String s) {

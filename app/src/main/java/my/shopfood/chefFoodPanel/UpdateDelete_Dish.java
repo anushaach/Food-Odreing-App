@@ -36,7 +36,6 @@ import java.util.UUID;
 
 import my.shopfood.ChefFoodPanel_BottomNavigation;
 import my.shopfood.R;
-import my.shopfood.UpdateDishModel;
 
 public class UpdateDelete_Dish extends AppCompatActivity {
     TextInputLayout desc, qty, pri;
@@ -198,7 +197,7 @@ public class UpdateDelete_Dish extends AppCompatActivity {
             progressDialog.setTitle("Uploading....");
             progressDialog.show();
             RandomUID= UUID.randomUUID().toString();
-            storageReference=storageReference.child(RandomUID);
+            ref=storageReference.child(RandomUID);
             ref.putFile(imageuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>(){
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

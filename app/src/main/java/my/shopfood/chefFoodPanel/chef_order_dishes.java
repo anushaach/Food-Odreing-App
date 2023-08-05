@@ -22,7 +22,7 @@ import my.shopfood.R;
 public class chef_order_dishes extends AppCompatActivity {
     RecyclerView recyclerViewdish;
   private  List<ChefPendingOrders> chefPendingOrdersList;
-  private ChefOrderdishesAdapter adapter;
+  private ChefOrderDishesAdapter adapter;
   DatabaseReference reference;
   String RandomUID;
 
@@ -58,7 +58,7 @@ public class chef_order_dishes extends AppCompatActivity {
 
             }
 
-            @Overrid
+
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }

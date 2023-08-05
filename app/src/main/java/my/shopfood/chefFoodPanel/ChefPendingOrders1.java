@@ -1,19 +1,19 @@
 package my.shopfood.chefFoodPanel;
 
-public class ChefWaitingOrders1 {
-    private String Address,GrandTotalPrice,MobileNumber,Name,Note,RandomUID,Status;
+public class ChefPendingOrders1 {
 
-    public ChefWaitingOrders1(String address, String grandTotalPrice, String mobileNumber, String name, String note, String randomUID, String status) {
+    private String Address,GrandTotalPrice,MobileNumber,Name,Note,RandomUID;
+
+    public ChefPendingOrders1(String address, String grandTotalPrice, String mobileNumber, String name, String note, String randomUID) {
         Address = address;
         GrandTotalPrice = grandTotalPrice;
         MobileNumber = mobileNumber;
         Name = name;
         Note = note;
         RandomUID = randomUID;
-        Status = status;
     }
 
-    public ChefWaitingOrders1()
+    public ChefPendingOrders1()
     {
 
     }
@@ -65,13 +65,4 @@ public class ChefWaitingOrders1 {
     public void setRandomUID(String randomUID) {
         RandomUID = randomUID;
     }
-
-    public String getStatus() {
-        return Status;
-    }
-
-    public void setStatus(String status) {
-        Status = status;
-    }
 }
-

@@ -32,6 +32,9 @@ import java.util.List;
 
 import my.shopfood.R;
 import my.shopfood.SendNotification.APIService;
+import my.shopfood.SendNotification.Data;
+import my.shopfood.SendNotification.MyResponse;
+import my.shopfood.SendNotification.NotificationSender;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -199,7 +202,7 @@ public class Chef_Order_Tobe_Prepared_View extends AppCompatActivity {
                     });
 
                 }
-                adapter = new ChefOrdertobePrepareViewAdapter(Chef_Order_Tobe_Prepared_View.this, ChefWaitingOrdersList);
+                adapter = new ChefOrdertobePrepareViewAdapter(Chef_Order_Tobe_Prepared_View.this, chefWaitingOrdersList);
                 recyclerViewdish.setAdapter(adapter);
 
             }
@@ -238,7 +241,7 @@ public class Chef_Order_Tobe_Prepared_View extends AppCompatActivity {
             public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
                 if (response.code() == 200) {
                     if (response.body().success != 1) {
-                        Toast.makeText(ChefOrdertobePrepareView.this, "Failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Chef_Order_Tobe_Prepared_View.this, "Failed", Toast.LENGTH_SHORT).show();
                     }
                 }
 

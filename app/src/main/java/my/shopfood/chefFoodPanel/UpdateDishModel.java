@@ -1,4 +1,4 @@
-package my.shopfood;
+package my.shopfood.chefFoodPanel;
 
 public class UpdateDishModel {
     String Dishes, RandomUID, Description, Quantity, Price, ImageURL, ChefId;
@@ -64,7 +64,5 @@ public class UpdateDishModel {
         ChefId = chefId;
     }
 }
-
-
 
 

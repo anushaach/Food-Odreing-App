@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import my.shopfood.R;
-import my.shopfood.UpdateDishModel;
 
 public class ChefHomeAdapter extends RecyclerView. Adapter<ChefHomeAdapter.ViewHolder>{
 
