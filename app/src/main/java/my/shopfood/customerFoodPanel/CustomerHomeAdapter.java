@@ -13,17 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.database.DatabaseReference;
 
 import java.text.CollationElementIterator;
-import java.util.List;
+import java.util.ArrayList;
 
 import my.shopfood.R;
-import my.shopfood.chefFoodPanel.UpdateDishModel;
+import my.shopfood.UpdateDishModel;
 
 public class CustomerHomeAdapter extends RecyclerView.Adapter<CustomerHomeAdapter.ViewHolder> {
     private Context mcontext;
-    private List<UpdateDishModel>updateDishModelList;
+    private ArrayList<UpdateDishModel> updateDishModelList;
     DatabaseReference databaseReference;
 
-    public CustomerHomeAdapter(Context context , List<UpdateDishModel>updateDishModelList){
+    public CustomerHomeAdapter(Context context , ArrayList<my.shopfood.UpdateDishModel> updateDishModelList)
+    {
         this.updateDishModelList = updateDishModelList;
         this.mcontext = context;
 
@@ -40,7 +41,7 @@ public class CustomerHomeAdapter extends RecyclerView.Adapter<CustomerHomeAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final UpdateDishModel updateDishModel=updateDishModelList.get(position);
+        final my.shopfood.UpdateDishModel updateDishModel=updateDishModelList.get(position);
 
         holder.Dishname.setText(updateDishModel.getPrice());
         updateDishModel.getRandomUID();

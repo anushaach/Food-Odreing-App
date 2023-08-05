@@ -32,6 +32,7 @@ import java.util.List;
 
 import my.shopfood.R;
 import my.shopfood.SendNotification.APIService;
+import my.shopfood.SendNotification.Client;
 import my.shopfood.SendNotification.Data;
 import my.shopfood.SendNotification.MyResponse;
 import my.shopfood.SendNotification.NotificationSender;
@@ -86,6 +87,7 @@ public class Chef_Order_Tobe_Prepared_View extends AppCompatActivity {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     ChefWaitingOrders chefWaitingOrders = snapshot.getValue(ChefWaitingOrders.class);
+                    Chef ChefWaitingOrders = null;
                     chefWaitingOrdersList.add(ChefWaitingOrders);
                 }
                 if (chefWaitingOrdersList.size() == 0) {
@@ -202,7 +204,7 @@ public class Chef_Order_Tobe_Prepared_View extends AppCompatActivity {
                     });
 
                 }
-                adapter = new ChefOrdertobePrepareViewAdapter(Chef_Order_Tobe_Prepared_View.this, chefWaitingOrdersList);
+                adapter = new ChefOrderTobePreparedAdapter(Chef_Order_Tobe_Prepared_View.this, chefWaitingOrdersList);
                 recyclerViewdish.setAdapter(adapter);
 
             }

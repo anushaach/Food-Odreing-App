@@ -22,6 +22,8 @@ import java.util.List;
 
 import my.shopfood.R;
 import my.shopfood.SendNotification.APIService;
+import my.shopfood.SendNotification.Client;
+import my.shopfood.SendNotification.Data;
 import my.shopfood.SendNotification.MyResponse;
 import my.shopfood.SendNotification.NotificationSender;
 import retrofit2.Call;
@@ -53,7 +55,7 @@ public class DeliveryShipOrderFragmentAdapter extends RecyclerView.Adapter<Deliv
         final DeliveryShipFinalOrders1 deliveryShipFinalOrders1 = deliveryShipFinalOrders1list.get(position);
         holder.Address.setText(deliveryShipFinalOrders1.getAddress());
         holder.grandtotalprice.setText("Grand Total: ₹ " + deliveryShipFinalOrders1.getGrandTotalPrice());
-        holder.mobilenumber.setText("+91" + deliveryShipFinalOrders1.getMobileNumber());
+        holder.mobilenumber.setText("+977" + deliveryShipFinalOrders1.getMobileNumber());
         final String random = deliveryShipFinalOrders1.getRandomUID();
         final String userid = deliveryShipFinalOrders1.getUserId();
         holder.Vieworder.setOnClickListener(new View.OnClickListener() {

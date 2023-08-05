@@ -42,6 +42,10 @@ public class DeliveryPendingOrderFragmentAdapter extends RecyclerView.Adapter<De
     private APIService apiService;
     String chefid;
 
+    public DeliveryPendingOrderFragmentAdapter(Context context, List<DeliveryShipOrders1> deliveryShipOrders1List) {
+
+    }
+
 
     public DeliveryPendingOrderFragmentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.delivery_pendingorders, parent, false);

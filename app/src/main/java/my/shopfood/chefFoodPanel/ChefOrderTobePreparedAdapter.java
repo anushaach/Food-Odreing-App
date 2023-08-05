@@ -24,6 +24,10 @@ public class ChefOrderTobePreparedAdapter extends RecyclerView.Adapter<ChefOrder
         this.context = context;
     }
 
+    public ChefOrderTobePreparedAdapter(Chef_Order_Tobe_Prepared_View context, List<Chef> chefWaitingOrdersList) {
+
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

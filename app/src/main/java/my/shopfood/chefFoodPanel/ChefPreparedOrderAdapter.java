@@ -15,7 +15,7 @@ import java.util.List;
 
 import my.shopfood.R;
 
-public class ChefPreparedOrderAdapter extends RecyclerView.Adapter<ChefPendingOrdersAdapter.ViewHolder> {
+public class ChefPreparedOrderAdapter extends RecyclerView.Adapter<ChefPreparedOrderAdapter.ViewHolder> {
     private Context context;
     private List<ChefFinalOrders1> chefFinalOrders1list;
 
@@ -31,7 +31,7 @@ public class ChefPreparedOrderAdapter extends RecyclerView.Adapter<ChefPendingOr
         return new ChefPreparedOrderAdapter.ViewHolder(view);
     }
 
-    @Override
+
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final ChefFinalOrders1 chefFinalOrders1 = chefFinalOrders1list.get(position);
         holder.Address.setText(chefFinalOrders1.getAddress());

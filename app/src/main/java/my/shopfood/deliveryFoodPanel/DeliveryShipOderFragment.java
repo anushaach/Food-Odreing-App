@@ -1,5 +1,6 @@
 package my.shopfood.deliveryFoodPanel;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,7 @@ public class DeliveryShipOderFragment extends Fragment {
     private DeliveryShipOrderFragmentAdapter adapter;
     private DatabaseReference databaseReference;
 
+    @SuppressLint("MissingInflatedId")
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_deliveryshipoder, null);
         getActivity().setTitle("Ship Orders");

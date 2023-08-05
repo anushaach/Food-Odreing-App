@@ -34,6 +34,7 @@ import java.util.List;
 import my.shopfood.R;
 import my.shopfood.SendNotification.APIService;
 import my.shopfood.SendNotification.Client;
+import my.shopfood.SendNotification.Data;
 import my.shopfood.SendNotification.MyResponse;
 import my.shopfood.SendNotification.NotificationSender;
 import retrofit2.Call;
@@ -262,7 +263,7 @@ public class Chef_Prepared_Order_View extends AppCompatActivity {
 
     private void sendNotifications(String usertoken, String title, String message, String prepared) {
 
-        Data data = new data(title, message, prepared);
+        Data data = new Data(title, message, prepared);
         NotificationSender sender = new NotificationSender(data, usertoken);
         apiService.sendNotification(sender).enqueue(new Callback<MyResponse>() {
             @Override
