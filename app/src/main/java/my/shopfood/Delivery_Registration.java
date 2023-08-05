@@ -210,10 +210,9 @@ public class Delivery_Registration extends AppCompatActivity {
                                                                     builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 
                                                                         @Override
-                                                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                                                        public void onClick(DialogInterface dialog, int i) {
 
 
-                                                                            Dialog dialog = null;
                                                                             dialog.dismiss();
 
                                                                             String phonenumber = Cpp.getSelectedCountryCodeWithPlus() + mobile;

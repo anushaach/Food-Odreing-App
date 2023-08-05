@@ -40,7 +40,12 @@ public class verify_phone extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_phone);
 
-        phoneno = getIntent().getStringExtra("phonenumberr").trim();
+        phoneno = getIntent().getStringExtra("phonenumberr");
+        if (phoneno!=null){
+            phoneno=phoneno.trim();
+        }else{
+
+        }
         entercode = (EditText) findViewById(R.id.codee);
         txt = (TextView) findViewById(R.id.text);
         Resend = (Button) findViewById(R.id.Resendotpp);
