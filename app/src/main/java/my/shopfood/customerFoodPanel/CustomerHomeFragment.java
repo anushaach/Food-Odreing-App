@@ -154,9 +154,21 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.search, menu);
         MenuItem menuItem = menu.findItem(R.id.Searchdish);
-        searchView = (SearchView) menuItem.getActionView();
+        androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) menuItem.getActionView();
         searchView.setQueryHint("Search Dish");
 
+        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                search(s);
+                return false;
+            }
+        });
 
     }
 

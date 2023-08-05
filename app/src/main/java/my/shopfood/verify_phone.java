@@ -29,9 +29,10 @@ public class verify_phone extends AppCompatActivity {
     String verificationId;
     FirebaseAuth FAuth;
 
-    Button verify = (Button) findViewById(R.id.Verify), Resend;
+    Button  Resend;
     TextView txt;
     EditText entercode;
+    Button verify;
     String phoneno;
 
     @Override

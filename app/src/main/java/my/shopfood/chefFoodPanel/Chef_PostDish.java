@@ -1,6 +1,8 @@
 package my.shopfood.chefFoodPanel;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -33,6 +35,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.UUID;
 
+
 import my.shopfood.R;
 
 public class Chef_PostDish extends AppCompatActivity {
@@ -51,6 +54,7 @@ public class Chef_PostDish extends AppCompatActivity {
     FirebaseAuth Fauth;
     StorageReference ref;
     String ChefId, RandomUID, State, City, Area;
+    private Object CropImage;
 
 
     @Override
@@ -91,6 +95,8 @@ public class Chef_PostDish extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             onSelectImageclick(view);
+//                            Intent intent=new Intent(getApplicationContext(),FoodDetails.class);
+//                            startActivity(intent);
                         }
                     });
                     post_dish.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +107,8 @@ public class Chef_PostDish extends AppCompatActivity {
                             description = desc.getEditText().getText().toString().trim();
                             quantity = qty.getEditText().getText().toString().trim();
                             price = pri.getEditText().getText().toString().trim();
+                            firebaseDatabase = FirebaseDatabase.getInstance();
+
 
                             if (isValid()) {
                                 uploadimage();
@@ -213,5 +221,8 @@ public class Chef_PostDish extends AppCompatActivity {
     }
 
 
+    }
 
-}
+
+
+
