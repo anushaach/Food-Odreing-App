@@ -1,8 +1,5 @@
 package my.shopfood;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -59,12 +59,12 @@ public class Login extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
                                     mDialog.dismiss();
+                                    Intent z = new Intent(Login.this, CustomerFoodPanel_BottomNavigation.class);
+
 
                                     if(FAuth.getCurrentUser().isEmailVerified()){
                                         mDialog.dismiss();
                                         Toast.makeText(Login.this, "Congratulation! You Have Successfully Login", Toast.LENGTH_SHORT).show();
-                                        Intent z = new Intent(Login.this, CustomerFoodPanel_BottomNavigation.class);
-
                                         startActivity(z);
                                         finish();
                                     }else{

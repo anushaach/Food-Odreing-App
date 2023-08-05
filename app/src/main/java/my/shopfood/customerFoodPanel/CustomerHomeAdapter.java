@@ -62,6 +62,7 @@ public class CustomerHomeAdapter extends RecyclerView.Adapter<CustomerHomeAdapte
         public CollationElementIterator price;
         ImageView imageView;
         TextView Dishname, Price;
+       
 
 
         public ViewHolder(@NonNull View itemView) {

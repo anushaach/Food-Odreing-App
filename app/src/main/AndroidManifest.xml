@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
@@ -18,134 +17,113 @@
         android:theme="@style/Theme.Shopfood"
         tools:targetApi="31">
         <activity
-            android:name=".PendingOrder"
-            android:exported="false" />
-        <activity
             android:name=".customerFoodPanel.PayableOrders"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".customerFoodPanel.OrderDish"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".deliveryFoodPanel.Delivery_shipOrder_View"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".deliveryFoodPanel.Delivery_PendingOrder_View"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".deliveryFoodPanel.Delivery_ShippingOrder"
-            android:exported="false" />
+            android:exported="true" />
         <activity
-            android:name=".customerFoodPanel.Customer_PhoneNumber"
-            android:exported="false" />
-        <activity
-            android:name=".customerFoodPanel.Customer_Payment_OPT"
-            android:exported="false" />
-
-        <activity android:name=".CustomerFoodPanel_BottomNavigation"
-            android:exported="false"/>
+            android:name=".CustomerFoodPanel_BottomNavigation"
+            android:exported="true" />
         <activity
             android:name=".customerFoodPanel.CustomerPhoneSendOPT"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".customerFoodPanel.customerPassword"
-            android:exported="false" />
-        <activity
-            android:name=".customerFoodPanel.Customer_Online_Payment"
-            android:exported="false" />
-       
-        <activity
-            android:name=".customerFoodPanel.Customer_ForgotPassword"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".chefFoodPanel.Chef_Prepared_Order_View"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".chefFoodPanel.Chef_Prepared_Order"
-            android:exported="false" />
-
-        <activity android:name="ChefFoodPanel_BottomNavigation"
-            android:exported="false"/>
+            android:exported="true" />
+        <activity
+            android:name=".ChefFoodPanel_BottomNavigation"
+            android:exported="true" />
         <activity
             android:name=".chefFoodPanel.Chef_Order_Tobe_Prepared_View"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".chefFoodPanel.Chef_Order_Tobe_Perpared"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".chefFoodPanel.chef_order_dishes"
-            android:exported="false" />
-
-
-
+            android:exported="true" />
         <activity
             android:name=".chefFoodPanel.Chef_PostDish"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Delivery_sendopt"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".DeliveryForgotPassword"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".DeliveryFoodPanel_BottomNavigation"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Delivery_VerifyPhone"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ForgotPassword"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Chefsendopt"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ChefForgotPassword"
-            android:exported="false" />
-
+            android:exported="true" />
         <activity
             android:name=".ChefVerifyPhone"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".sendotp"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".verify_phone"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Delivery_Registration"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Delivery_Loginphone"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Delivery_Login"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Registration"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Loginphone"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Login"
             android:exported="true" />
         <activity
             android:name=".ChefRegistration"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Chefloginphone"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ChefLogin"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ChooseOne"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainMenu"
-            android:exported="false" />
-
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

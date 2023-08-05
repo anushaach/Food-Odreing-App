@@ -1,4 +1,4 @@
-package my.shopfood.customerFoodPanel;
+package my.shopfood;
 
 public class Customer {
 
@@ -101,5 +101,13 @@ public class Customer {
 
     public void setLocalAddress(String localAddress) {
         LocalAddress = localAddress;
+    }
+
+    public String getMobileno() {
+        return null;
+    }
+
+    public String getSuburban() {
+        return null;
     }
 }

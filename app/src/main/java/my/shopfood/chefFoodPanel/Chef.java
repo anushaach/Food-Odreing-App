@@ -64,4 +64,8 @@ public class Chef {
     public String getState() {
         return State;
     }
+
+    public String getSuburban() {
+        return null;
+    }
 }

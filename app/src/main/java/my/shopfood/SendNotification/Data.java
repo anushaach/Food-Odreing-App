@@ -1,6 +1,7 @@
 package my.shopfood.SendNotification;
 
 public class Data {
+
     private String Title;
     private String Message;
     private String Typepage;
@@ -39,5 +40,4 @@ public class Data {
         Typepage = typepage;
     }
 }
-
 

@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 
 import androidx.appcompat.app.AlertDialog;
 
+import my.shopfood.customerFoodPanel.CustomerForgotpassword;
+
 public class ResuableCodeForAll {
 
     public static void ShowAlert(ChefRegistration context, String title, String message){
@@ -60,6 +62,9 @@ public class ResuableCodeForAll {
     }
 
     public static void ShowAlert(ChefForgotPassword chefForgotPassword, String s, String s1) {
+    }
+
+    public void ShowAlert(CustomerForgotpassword customerForgotpassword, String error, String message) {
     }
 }
 

@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import my.shopfood.Customer;
 import my.shopfood.R;
 import my.shopfood.UpdateDishModel;
 
@@ -74,7 +75,6 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
                         State = cust.getState();
                         City = cust.getCity();
 
-
                         customermenu();
                     }
 
@@ -110,7 +110,7 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
                         updateDishModelList.add(updateDishModel);
                     }
                 }
-                adapter = new CustomerHomeAdapter(getContext(), (ArrayList<UpdateDishModel>) updateDishModelList);
+                adapter = new CustomerHomeAdapter(getContext(), UpdateDishModel);
                 recyclerView.setAdapter(adapter);
                 swipeRefreshLayout.setRefreshing(false);
 
@@ -122,16 +122,14 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
+            public boolean onQueryTextSubmit(String s) {
                 return false;
             }
 
             @Override
-            public boolean onQueryTextChange(String newText) {
-                search(newText);
+            public boolean onQueryTextChange(String s) {
                 return true;
             }
         });
@@ -151,6 +149,7 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
         recyclerView.setAdapter(adapter);
 
     }
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.search, menu);
         MenuItem menuItem = menu.findItem(R.id.Searchdish);

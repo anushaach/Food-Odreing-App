@@ -11,6 +11,8 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 
 public class MyFirebaseldService extends FirebaseMessagingService {
+
+    @Override
     public void onNewToken(@NonNull String s) {
         super.onNewToken(s);
         FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
@@ -39,5 +41,3 @@ public class MyFirebaseldService extends FirebaseMessagingService {
         FirebaseDatabase.getInstance().getReference("Tokens").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(token1);
     }
 }
-
-
