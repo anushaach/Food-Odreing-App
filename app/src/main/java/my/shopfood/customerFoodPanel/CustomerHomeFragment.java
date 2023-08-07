@@ -38,18 +38,18 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
     RecyclerView recyclerView;
     private List<UpdateDishModel> updateDishModelList;
     private CustomerHomeAdapter adapter;
-    String State, City, Sub;
+    String State, City;
     DatabaseReference dataaa, databaseReference;
     SwipeRefreshLayout swipeRefreshLayout;
     SearchView searchView;
-
+    private android.widget.SearchView SearchView;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_customerhome, null);
-        getActivity().setTitle("Food On");
+        getActivity().setTitle("Shop Food");
         setHasOptionsMenu(true);
         recyclerView = v.findViewById(R.id.recycle_menu);
         recyclerView.setHasFixedSize(true);
@@ -99,7 +99,7 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
     private void customermenu() {
 
         swipeRefreshLayout.setRefreshing(true);
-        databaseReference = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(State).child(City).child(Sub);
+        databaseReference = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(State).child(City);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -123,19 +123,21 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
+        if (searchView != null) {
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    return false;
+                }
 
-            @Override
-            public boolean onQueryTextChange(String s) {
-                return true;
-            }
-        });
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    return true;
+                }
+            });
 
 
+        }
     }
 
     private void search(final String searchtext) {
@@ -150,28 +152,33 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
         recyclerView.setAdapter(adapter);
 
     }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.search, menu);
         MenuItem menuItem = menu.findItem(R.id.Searchdish);
         androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) menuItem.getActionView();
         searchView.setQueryHint("Search Dish");
+        this.searchView = SearchView;
 
-        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String s) {
-                search(s);
-                return false;
-            }
-        });
+        if (updateDishModelList != null) {
+
+            searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    search(s);
+                    return false;
+                }
+            });
+
+        }
+
 
     }
-
-
-
 }

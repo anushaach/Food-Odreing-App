@@ -10,14 +10,14 @@ public class Customer {
 
     }
 
-    public Customer(String city, String firstName, String lastName, String password, String confirmPassword, String emailId, String mobileNo, String state, String area, String localAddress) {
+    public Customer(String city, String firstName, String lastName, String password, String confirmPassword, String emailId, String MobileNo, String state, String area, String localAddress) {
         this.city = city;
         FirstName = firstName;
         LastName = lastName;
         Password = password;
         ConfirmPassword = confirmPassword;
         EmailId = emailId;
-        MobileNo = mobileNo;
+        MobileNo = MobileNo;
         State = state;
         Area = area;
         LocalAddress = localAddress;
@@ -103,9 +103,7 @@ public class Customer {
         LocalAddress = localAddress;
     }
 
-    public String getMobileno() {
-        return null;
-    }
+
 
     public String getSuburban() {
         return null;

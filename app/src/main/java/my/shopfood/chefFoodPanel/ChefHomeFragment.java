@@ -53,6 +53,7 @@ public class ChefHomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Chef cheff=snapshot.getValue(Chef.class);
+
                 State=cheff.getState();
                 City= cheff.getCity();
                 Area=cheff.getArea();

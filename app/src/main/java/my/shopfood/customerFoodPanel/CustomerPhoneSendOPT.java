@@ -62,7 +62,7 @@ public class CustomerPhoneSendOPT extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 Customer customer = dataSnapshot.getValue(Customer.class);
-                OldNumber=customer.getMobileno();
+                OldNumber=customer.getMobileNo();
                 verify.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

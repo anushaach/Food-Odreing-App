@@ -51,6 +51,7 @@ public class ChefVerifyPhone extends AppCompatActivity {
         txt.setVisibility(View.INVISIBLE);
 
         sendVerificationcode(phoneno);
+        FAuth = FirebaseAuth.getInstance();
 
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,8 +163,12 @@ public class ChefVerifyPhone extends AppCompatActivity {
     };
 
     private void verifyCode(String code) {
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId , code);
-        linkCredential(credential);
+        if (verificationId != null) {
+            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
+            linkCredential(credential);
+        } else {
+            Toast.makeText(ChefVerifyPhone.this, "Verification ID is null", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void linkCredential(PhoneAuthCredential credential) {

@@ -1,8 +1,11 @@
 package my.shopfood.chefFoodPanel;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,9 +16,14 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,6 +40,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+//import com.theartofdev.edmodo.cropper.CropImage;
+
+
 
 import java.util.UUID;
 
@@ -50,12 +61,15 @@ public class Chef_PostDish extends AppCompatActivity {
     FirebaseStorage storage;
     StorageReference storageReference;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference, dataa;
-    FirebaseAuth Fauth;
+    DatabaseReference databaseReference;
+    DatabaseReference dataaa;
+    FirebaseAuth FAuth;
     StorageReference ref;
-    String ChefId, RandomUID, State, City, Area;
-    private Object CropImage;
+    String ChefId;
+    String RandomUId;
+    String State, City, Sub;
 
+    private ActivityResultLauncher<Intent> imagePickerLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,126 +78,82 @@ public class Chef_PostDish extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        Dishes = (Spinner) findViewById(R.id.dishes);
-        desc = (TextInputLayout) findViewById(R.id.description);
-        qty = (TextInputLayout) findViewById(R.id.Quantity);
-        pri = (TextInputLayout) findViewById(R.id.price);
-        post_dish = (Button) findViewById(R.id.post);
-        Fauth = FirebaseAuth.getInstance();
-        databaseReference = firebaseDatabase.getInstance().getReference("FoodDetails");
+        Dishes = findViewById(R.id.dishes);
+        desc = findViewById(R.id.description);
+        qty = findViewById(R.id.Quantity);
+        pri = findViewById(R.id.price);
+        post_dish = findViewById(R.id.post);
+        FAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("FoodSupplyDetails");
 
         try {
-            String userid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            dataa = firebaseDatabase.getInstance().getReference("Chef");
-            dataa.addListenerForSingleValueEvent(new ValueEventListener() {
+            String userid = FAuth.getCurrentUser().getUid();
+            databaseReference = firebaseDatabase.getReference("Chef").child(userid);
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                    Chef cheff = snapshot.getValue(Chef.class);
-                    State = cheff.getState();
-                    City = cheff.getCity();
-                    Area = cheff.getArea();
-                    imageButton = (ImageButton) findViewById(R.id.imageupload);
-                    imageButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                          onSelectImageclick(view);
-                        }
-                    });
-
-                    post_dish.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            onSelectImageclick(view);
-//                            Intent intent=new Intent(getApplicationContext(),FoodDetails.class);
-//                            startActivity(intent);
-                        }
-                    });
-                    post_dish.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-
-                            dishes = Dishes.getSelectedItem().toString().trim();
-                            description = desc.getEditText().getText().toString().trim();
-                            quantity = qty.getEditText().getText().toString().trim();
-                            price = pri.getEditText().getText().toString().trim();
-                            firebaseDatabase = FirebaseDatabase.getInstance();
-
-
-                            if (isValid()) {
-                                uploadimage();
-                            }
-                        }
-                    });
-
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Chef chefc = dataSnapshot.getValue(Chef.class);
+                    if (chefc != null) {
+                        State = chefc.getState();
+                        City = chefc.getCity();
+                        Sub = chefc.getSuburban();
+                    }
                 }
 
                 @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(Chef_PostDish.this, "Error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
+
         } catch (Exception e) {
-            Log.e("Error:", e.getMessage());
+            e.printStackTrace();
         }
+
+        imagePickerLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    Intent data = result.getData();
+                    imageuri = data.getData();
+                    imageButton.setImageURI(imageuri);
+                }
+            }
+        });
+
+        imageButton = findViewById(R.id.imageupload);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onSelectImageClick();
+            }
+        });
+
+        post_dish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dishes = Dishes.getSelectedItem().toString().trim();
+                description = desc.getEditText().getText().toString().trim();
+                quantity = qty.getEditText().getText().toString().trim();
+                price = pri.getEditText().getText().toString().trim();
+
+                if (isValid() && imageuri != null) {
+                    uploadImage();
+                } else {
+                    Toast.makeText(Chef_PostDish.this, "Please fill all fields and select an image.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
-
-    private void uploadimage() {
-
-        if (imageuri != null) {
-            final ProgressDialog progressDialog = new ProgressDialog(Chef_PostDish.this);
-            progressDialog.setTitle("Uploading.........");
-            progressDialog.show();
-            RandomUID = UUID.randomUUID().toString();
-            ref = storageReference.child(RandomUID);
-            ChefId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            ref.putFile(imageuri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            FoodDetails info = new FoodDetails(dishes, quantity, price, description, String.valueOf(uri), RandomUID, ChefId);
-                            firebaseDatabase.getInstance().getReference("FoodDetails").child(State).child(City).child(Area).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(RandomUID)
-                                    .setValue(info).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-
-                                    progressDialog.dismiss();
-                                    Toast.makeText(Chef_PostDish.this, "Dish Posted Successfully!", Toast.LENGTH_SHORT).show();
-
-
-                                }
-                            });
-
-
-                        }
-                    });
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    progressDialog.dismiss();
-                    Toast.makeText(Chef_PostDish.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                    double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
-                    progressDialog.setCanceledOnTouchOutside(false);
-                    progressDialog.setMessage("Uploaded" + (int) progress + "%");
-
-
-                }
-            });
-
-        }
+    private void onSelectImageClick() {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        imagePickerLauncher.launch(Intent.createChooser(intent, "Select Image"));
     }
-
 
     private boolean isValid() {
-
         desc.setErrorEnabled(false);
         desc.setError("");
         qty.setErrorEnabled(false);
@@ -191,37 +161,94 @@ public class Chef_PostDish extends AppCompatActivity {
         pri.setErrorEnabled(false);
         pri.setError("");
 
-        boolean isvalidDescription = false, isValidPrice = false, isValidQuality = false, isValid = false, isValidQuantity = false;;
+        boolean isValiDescription, isValidPrice, isvalidQuantity, isvalid;
+        isValiDescription = isValidPrice = isvalidQuantity = isvalid = true;
+
         if (TextUtils.isEmpty(description)) {
             desc.setErrorEnabled(true);
             desc.setError("Description is Required");
-        } else {
-            desc.setError(null);
-            isvalidDescription = true;
+            isValiDescription = false;
         }
 
         if (TextUtils.isEmpty(quantity)) {
             qty.setErrorEnabled(true);
-            qty.setError("Enter number of Plates or Items");
-        } else {
-            isValidQuantity = true;
+            qty.setError("Quantity is Required");
+            isvalidQuantity = false;
         }
+
         if (TextUtils.isEmpty(price)) {
             pri.setErrorEnabled(true);
-            pri.setError("Please Mention Price");
-        } else {
-            isValidPrice = true;
+            pri.setError("Price is Required");
+            isValidPrice = false;
         }
-        isValid = (isvalidDescription && isValidQuantity && isValidPrice) ? true : false;
-        return isValid;
-    }
-    private void onSelectImageclick(View view) {
 
-
+        isvalid = isValiDescription && isvalidQuantity && isValidPrice;
+        return isvalid;
     }
 
+    private void uploadImage() {
+        final ProgressDialog progressDialog = new ProgressDialog(Chef_PostDish.this);
+        progressDialog.setTitle("Uploading...");
+        progressDialog.show();
 
+        RandomUId = UUID.randomUUID().toString();
+        final StorageReference ref = storageReference.child(RandomUId);
+        ChefId = FAuth.getCurrentUser().getUid();
+
+        UploadTask uploadTask = ref.putFile(imageuri);
+        Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) {
+                    throw task.getException();
+                }
+
+                // Continue with the task to get the download URL
+                return ref.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+                    Uri downloadUri = task.getResult();
+                    FoodSupplyDetails info = new FoodSupplyDetails(dishes, quantity, price, description, downloadUri.toString(), RandomUId, ChefId);
+                    databaseReference.child(State).child(City).child(Sub).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(RandomUId)
+                            .setValue(info)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(Chef_PostDish.this, "Dish Posted successfully", Toast.LENGTH_SHORT).show();
+                                    // Clear input fields and image selection after successful posting
+                                    desc.getEditText().setText("");
+                                    qty.getEditText().setText("");
+
+                                    pri.getEditText().setText("");
+                                    imageuri = null;
+                                    imageButton.setImageResource(R.drawable.baseline_add_to_photos_24);
+
+
+
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(Chef_PostDish.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                } else {
+                    progressDialog.dismiss();
+                    Toast.makeText(Chef_PostDish.this, "Failed to upload image.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
+}
+
+
 
 
 

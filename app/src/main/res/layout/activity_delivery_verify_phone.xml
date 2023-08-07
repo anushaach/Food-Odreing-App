@@ -37,7 +37,7 @@
             android:ems="10"
             android:inputType="number"
             android:layout_marginTop="15dp"
-            android:text="OPT"
+            android:text="OTP"
             android:textColor="#636262"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

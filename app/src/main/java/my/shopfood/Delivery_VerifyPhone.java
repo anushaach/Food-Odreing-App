@@ -39,7 +39,15 @@ public class Delivery_VerifyPhone extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_verify_phone);
 
-        phoneno = getIntent().getStringExtra("phonenumber").trim();
+        if (getIntent().hasExtra("phonenumber")) {
+            phoneno = getIntent().getStringExtra("phonenumber").trim();
+        } else {
+            // Handle the case when 'phonenumber' extra is not passed from the previous activity
+            Toast.makeText(this, "Phone number not provided.", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
 
 
         entercode =(EditText) findViewById(R.id.Pnumber);
@@ -158,9 +166,18 @@ public class Delivery_VerifyPhone extends AppCompatActivity {
     };
 
     private void verifyCode(String code) {
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId , code);
-        linkCredential(credential);
-    }
+
+            if (verificationId != null) {
+                PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
+                linkCredential(credential);
+            } else {
+                Toast.makeText(this, "Verification ID is null. Cannot create PhoneAuthCredential.", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+
+
 
     private void linkCredential(PhoneAuthCredential credential) {
 

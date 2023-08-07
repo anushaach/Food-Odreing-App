@@ -223,7 +223,7 @@ public class ChefRegistration extends AppCompatActivity {
                                                                         public void onClick(DialogInterface dialogInterface, int i) {
                                                                          
 
-                                                                            Dialog dialog = new Dialog(context);
+                                                                            Dialog dialog = new Dialog(ChefRegistration.this);
                                                                             dialog.show();
                                                                             dialog.dismiss();
 

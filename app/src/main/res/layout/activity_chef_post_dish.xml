@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/img3">
+    android:background="@drawable/img_2">
 
 
     <LinearLayout
@@ -25,7 +25,7 @@
             android:layout_height="30dp"
             android:layout_marginLeft="5dp"
             android:text="Dish Name"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="17dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,7 +53,7 @@
         android:id="@+id/description"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.56"
@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:hint="Description"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:inputType="text" />
 
@@ -75,7 +75,7 @@
         android:id="@+id/Quantity"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.57"
@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:hint="Quantity"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -96,7 +96,7 @@
         android:id="@+id/price"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.57"
@@ -108,7 +108,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:hint="Price"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:inputType="number" />
     </com.google.android.material.textfield.TextInputLayout>
