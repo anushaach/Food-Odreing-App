@@ -17,6 +17,7 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -163,12 +164,15 @@ public class CustomerPhoneSendOPT extends AppCompatActivity {
 
     private void sendverificationcode(String number) {
 
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                number,
-                60,
-                TimeUnit.SECONDS,
-                CustomerPhoneSendOPT.this,
-                new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+        PhoneAuthOptions options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
+                .setPhoneNumber(number)
+                .setTimeout(60L, TimeUnit.SECONDS)
+                .setActivity(this)
+                .setCallbacks(mCallBack).build();
+        PhoneAuthProvider.verifyPhoneNumber(options);
+    }
+    private PhoneAuthProvider.OnVerificationStateChangedCallbacks
+            mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                     @Override
                     public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                         super.onCodeSent(s, forceResendingToken);
@@ -192,7 +196,7 @@ public class CustomerPhoneSendOPT extends AppCompatActivity {
 
                         Toast.makeText(CustomerPhoneSendOPT.this, "This 1:" + e.getMessage(), Toast.LENGTH_LONG).show();
                     }
-                }
-        );
+                };
+
     }
-    }
+

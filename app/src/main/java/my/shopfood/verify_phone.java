@@ -20,6 +20,7 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
@@ -39,12 +40,14 @@ public class verify_phone extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_phone);
+        FAuth=FirebaseAuth.getInstance();
 
         phoneno = getIntent().getStringExtra("phonenumberr");
-        if (phoneno!=null){
+        if (phoneno!=null && !phoneno.isEmpty()) {
             phoneno=phoneno.trim();
         }else{
-
+            Toast.makeText(this, "Phone number", Toast.LENGTH_SHORT).show();
+            finish();
         }
         entercode = (EditText) findViewById(R.id.codee);
         txt = (TextView) findViewById(R.id.text);
@@ -130,13 +133,12 @@ public class verify_phone extends AppCompatActivity {
     }
 
     private void sendVerificationcode(String phoneno) {
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phoneno,
-                60,
-                TimeUnit.SECONDS,
-                (Activity) TaskExecutors.MAIN_THREAD,
-                mCallback
-        );
+        PhoneAuthOptions options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
+                .setPhoneNumber(phoneno)
+                .setTimeout(60L, TimeUnit.SECONDS)
+                .setActivity(this)
+                .setCallbacks(mCallback).build();
+        PhoneAuthProvider.verifyPhoneNumber(options);
 
 
     }

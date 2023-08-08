@@ -99,7 +99,6 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
     private void customermenu() {
 
         swipeRefreshLayout.setRefreshing(true);
-        if (State != null && City != null){
         databaseReference = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(State).child(City);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -124,11 +123,7 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-        }
-        else{
-            swipeRefreshLayout.setRefreshing(false);
-        }
-            if(searchView != null) {
+        if (searchView != null) {
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String s) {
@@ -155,7 +150,6 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
         }
         adapter = new CustomerHomeAdapter(getContext(), mylist);
         recyclerView.setAdapter(adapter);
-
 
     }
 

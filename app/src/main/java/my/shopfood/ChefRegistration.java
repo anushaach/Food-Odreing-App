@@ -1,5 +1,9 @@
 package my.shopfood;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -13,10 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
@@ -24,6 +24,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.FirebaseApp;
 import com.hbb20.CountryCodePicker;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ import java.util.HashMap;
 
 public class ChefRegistration extends AppCompatActivity {
     String[] NepaliFood = {"Chitwan", "Butwal", "Nepaljung"};
-    String[] NewariFood = {"Kathmandu", "Pokhara"};
+    String[] NewariFood = {"Kathamdu", "Pokhara"};
 
     TextInputLayout Fname, Lname, Email, Pass, CPass, mobileno, houseno, area, pincode;
     Spinner Statespin, Cityspin,Suburban;

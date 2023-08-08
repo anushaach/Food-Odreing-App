@@ -1,10 +1,15 @@
 package my.shopfood.chefFoodPanel;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -30,16 +35,21 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+//import com.theartofdev.edmodo.cropper.CropImage;
+
+
 
 import java.util.UUID;
+
 
 import my.shopfood.R;
 
 public class Chef_PostDish extends AppCompatActivity {
-
 
     ImageButton imageButton;
     Button post_dish;
@@ -58,6 +68,8 @@ public class Chef_PostDish extends AppCompatActivity {
     String ChefId;
     String RandomUId;
     String State, City, Sub;
+
+    private ActivityResultLauncher<Intent> imagePickerLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +111,7 @@ public class Chef_PostDish extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        ActivityResultLauncher<Intent> imagePickerLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        imagePickerLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
@@ -138,7 +150,6 @@ public class Chef_PostDish extends AppCompatActivity {
     private void onSelectImageClick() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
-        ActivityResultLauncher<Intent> imagePickerLauncher = null;
         imagePickerLauncher.launch(Intent.createChooser(intent, "Select Image"));
     }
 
@@ -235,3 +246,9 @@ public class Chef_PostDish extends AppCompatActivity {
         });
     }
 }
+
+
+
+
+
+
