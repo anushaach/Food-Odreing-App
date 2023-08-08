@@ -1,12 +1,8 @@
 package my.shopfood.deliveryFoodPanel;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -26,7 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import my.shopfood.MainMenu;
 import my.shopfood.R;
 
 public class DeliveryShipOderFragment extends Fragment {
@@ -79,27 +74,6 @@ public class DeliveryShipOderFragment extends Fragment {
             }
         });
 
-    }
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.logout,menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int idd = item.getItemId();
-        if(idd == R.id.logout){
-            Logout();
-            return true;
-        }
-        return  super.onOptionsItemSelected(item);
-    }
-
-    private void Logout() {
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(getActivity(), MainMenu.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
     }
 }
 

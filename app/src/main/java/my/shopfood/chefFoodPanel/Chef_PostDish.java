@@ -222,6 +222,7 @@ public class Chef_PostDish extends AppCompatActivity {
                                     // Clear input fields and image selection after successful posting
                                     desc.getEditText().setText("");
                                     qty.getEditText().setText("");
+
                                     pri.getEditText().setText("");
                                     imageuri = null;
                                     imageButton.setImageResource(R.drawable.baseline_add_to_photos_24);
