@@ -61,7 +61,7 @@ public class Delivery_Login extends AppCompatActivity {
                                     mDialog.dismiss();
 
                                     if(FAuth.getCurrentUser().isEmailVerified()){
-                                        mDialog.dismiss();
+
                                         Toast.makeText(Delivery_Login.this, "Congratulation! You Have Successfully Login", Toast.LENGTH_SHORT).show();
                                         Intent z = new Intent(Delivery_Login.this, DeliveryFoodPanel_BottomNavigation.class);
 

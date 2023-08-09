@@ -41,7 +41,13 @@ public class sendotp extends AppCompatActivity {
 
 
         phoneno = getIntent().getStringExtra("phonenumber").trim();
-        sendVerificationcode(phoneno);
+        if ((phoneno == null|| phoneno.isEmpty())){
+            Toast.makeText(this, "Invalid phone number", Toast.LENGTH_SHORT).show();
+            finish();
+        }else {
+            phoneno = phoneno.trim();
+            sendVerificationcode(phoneno);
+        }
 
 
         entercode = (EditText) findViewById(R.id.codee);

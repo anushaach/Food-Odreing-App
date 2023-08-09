@@ -99,30 +99,35 @@ public class CustomerHomeFragment extends Fragment implements SwipeRefreshLayout
     private void customermenu() {
 
         swipeRefreshLayout.setRefreshing(true);
-        databaseReference = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(State).child(City);
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                updateDishModelList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-                        UpdateDishModel updateDishModel = snapshot1.getValue(UpdateDishModel.class);
-                        updateDishModelList.add(updateDishModel);
+        if (State != null && City != null) {
+            databaseReference = FirebaseDatabase.getInstance().getReference("FoodSupplyDetails").child(State).child(City);
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    updateDishModelList.clear();
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                            UpdateDishModel updateDishModel = snapshot1.getValue(UpdateDishModel.class);
+                            updateDishModelList.add(updateDishModel);
+                        }
                     }
+                    ArrayList<UpdateDishModel> UpdateDishModel = new ArrayList<>(updateDishModelList);
+                    adapter = new CustomerHomeAdapter(getContext(), UpdateDishModel);
+                    recyclerView.setAdapter(adapter);
+                    swipeRefreshLayout.setRefreshing(false);
+
                 }
-                ArrayList<UpdateDishModel> UpdateDishModel = new ArrayList<>();
-                adapter = new CustomerHomeAdapter(getContext(), UpdateDishModel);
-                recyclerView.setAdapter(adapter);
-                swipeRefreshLayout.setRefreshing(false);
 
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        });
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            });
+        }
+        else {
+            swipeRefreshLayout.setRefreshing(false);
+        }
         if (searchView != null) {
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override

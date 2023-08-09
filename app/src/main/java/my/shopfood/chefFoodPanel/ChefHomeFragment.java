@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -52,13 +53,18 @@ public class ChefHomeFragment extends Fragment {
         dataa.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Chef cheff=snapshot.getValue(Chef.class);
+                Chef cheff = snapshot.getValue(Chef.class);
 
-                State=cheff.getState();
-                City= cheff.getCity();
-                Area=cheff.getArea();
-                ChefDishes();
+                if (cheff != null) {
 
+                    State = cheff.getState();
+                    City = cheff.getCity();
+                    Area = cheff.getArea();
+                    ChefDishes();
+
+                } else {
+                    showToast("Chef information not found.");
+                }
             }
 
             @Override
@@ -68,6 +74,10 @@ public class ChefHomeFragment extends Fragment {
         });
 
         return v;
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(getContext(), "message", Toast.LENGTH_SHORT).show();
     }
 
     private void ChefDishes() {

@@ -43,9 +43,8 @@ public class verify_phone extends AppCompatActivity {
         FAuth=FirebaseAuth.getInstance();
 
         phoneno = getIntent().getStringExtra("phonenumberr");
-        if (phoneno!=null && !phoneno.isEmpty()) {
-            phoneno=phoneno.trim();
-        }else{
+        if (phoneno ==null || phoneno.isEmpty()) {
+
             Toast.makeText(this, "Phone number", Toast.LENGTH_SHORT).show();
             finish();
         }
@@ -66,14 +65,13 @@ public class verify_phone extends AppCompatActivity {
             public void onClick(View view) {
 
                 String code = entercode.getText().toString().trim();
-                Resend.setVisibility(View.INVISIBLE);
 
-                if (code.isEmpty() && code.length()<6){
+                if (code.isEmpty() ||  code.length()<6){
                     entercode.setError("Enter code");
                     entercode.requestFocus();
-                    return;
+                }else {
+                    verifyCode(code);
                 }
-                verifyCode(code);
             }
         });
         new CountDownTimer(60000, 1000){
@@ -97,8 +95,7 @@ public class verify_phone extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Resend.setVisibility(View.INVISIBLE);
-                Resendotp(phoneno);
-
+               sendVerificationcode(phoneno);
 
 
                 new CountDownTimer(60000, 1000){
@@ -125,12 +122,6 @@ public class verify_phone extends AppCompatActivity {
     }
 
 
-
-    private void Resendotp(String phoneno) {
-
-        sendVerificationcode(phoneno);
-
-    }
 
     private void sendVerificationcode(String phoneno) {
         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())

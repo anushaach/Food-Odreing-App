@@ -67,7 +67,7 @@ public class Chef_PostDish extends AppCompatActivity {
     StorageReference ref;
     String ChefId;
     String RandomUId;
-    String State, City, Sub;
+    String State, City, Sub,Area;
 
     private ActivityResultLauncher<Intent> imagePickerLauncher;
 
@@ -212,8 +212,19 @@ public class Chef_PostDish extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     Uri downloadUri = task.getResult();
                     FoodSupplyDetails info = new FoodSupplyDetails(dishes, quantity, price, description, downloadUri.toString(), RandomUId, ChefId);
-                    databaseReference.child(State).child(City).child(Sub).child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(RandomUId)
-                            .setValue(info)
+                    State = "your_state_value";
+                    Area = "your_area_value";
+                    City = "your_city_value";
+
+                    DatabaseReference uploadReference = firebaseDatabase.getReference("FoodDetails")  // Use the appropriate reference
+
+                            .child(State)
+                            .child(Area)
+                            .child(City)
+                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .child(RandomUId);
+
+                    uploadReference.setValue(info)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
@@ -222,13 +233,9 @@ public class Chef_PostDish extends AppCompatActivity {
                                     // Clear input fields and image selection after successful posting
                                     desc.getEditText().setText("");
                                     qty.getEditText().setText("");
-
                                     pri.getEditText().setText("");
                                     imageuri = null;
                                     imageButton.setImageResource(R.drawable.baseline_add_to_photos_24);
-
-
-
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -247,9 +254,3 @@ public class Chef_PostDish extends AppCompatActivity {
         });
     }
 }
-
-
-
-
-
-
